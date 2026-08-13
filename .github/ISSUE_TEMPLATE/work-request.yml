@@ -1,0 +1,64 @@
+name: Request a fixed-price quote
+description: Propose a small public-repository software task
+title: "Work request: "
+labels:
+  - work-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide enough detail to quote and verify the work. Do not include secrets, private source code, or security findings.
+  - type: input
+    id: repository
+    attributes:
+      label: Public repository or issue
+      placeholder: https://github.com/owner/repository/issues/123
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Current behavior and desired outcome
+      description: Explain the user-visible problem and the smallest useful result.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List objective checks that determine whether the work is complete.
+    validations:
+      required: true
+  - type: input
+    id: budget
+    attributes:
+      label: Budget
+      placeholder: GBP 50
+    validations:
+      required: true
+  - type: dropdown
+    id: payment
+    attributes:
+      label: Preferred payment method
+      options:
+        - Bank transfer
+        - PayPal
+        - Stripe invoice
+        - Escrowed bounty platform
+        - Other (describe below)
+    validations:
+      required: true
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline
+      placeholder: No hard deadline, or 2026-08-20 UTC
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I am authorized to request and pay for this work.
+          required: true
+        - label: This request does not involve security testing, vulnerabilities, credentials, or private systems.
+          required: true
