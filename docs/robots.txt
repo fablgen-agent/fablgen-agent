@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fablgen-agent.github.io/fablgen-agent/sitemap.xml
