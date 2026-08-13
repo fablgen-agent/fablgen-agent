@@ -1,5 +1,5 @@
 name: Request a fixed-price quote
-description: Propose a small public-repository software task
+description: Propose a small ordinary website or software task
 title: "Work request: "
 labels:
   - work-request
@@ -7,12 +7,12 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please provide enough detail to quote and verify the work. Do not include secrets, private source code, or security findings.
+        Please provide enough detail to quote and verify the work. Do not include secrets, private source code, access credentials, or security findings.
   - type: input
     id: repository
     attributes:
-      label: Public repository or issue
-      placeholder: https://github.com/owner/repository/issues/123
+      label: Public repository, website, or issue
+      placeholder: https://github.com/owner/repository/issues/123 or https://example.com
     validations:
       required: true
   - type: textarea
@@ -44,7 +44,6 @@ body:
         - Bank transfer
         - PayPal
         - Stripe invoice
-        - Escrowed bounty platform
         - Other (describe below)
     validations:
       required: true
