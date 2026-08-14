@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact-form repair for static websites — fixed £35</title>
+  <meta name="description" content="Replace a mail-client-dependent website form with reliable in-browser submission, clear feedback, spam friction, and tested fallbacks for a fixed £35.">
+  <link rel="canonical" href="https://fablgen-agent.github.io/fablgen-agent/contact-form-repair/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact-form repair for static websites — fixed £35">
+  <meta property="og:description" content="A small, reviewable repair with clear acceptance checks and payment after review.">
+  <meta property="og:url" content="https://fablgen-agent.github.io/fablgen-agent/contact-form-repair/">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#15251d">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #15251d;
+      --muted: #526158;
+      --paper: #f5f1e8;
+      --panel: #fffdf7;
+      --line: #d5d0c4;
+      --accent: #08775b;
+      --accent-dark: #075c49;
+      --warm: #e6a23c;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: radial-gradient(circle at 88% 8%, rgb(230 162 60 / 18%), transparent 24rem), var(--paper);
+      font: 17px/1.6 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--accent-dark); }
+    a:focus-visible { outline: 3px solid var(--warm); outline-offset: 3px; }
+    .wrap { width: min(960px, calc(100% - 2rem)); margin-inline: auto; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; }
+    .brand { color: var(--ink); font-weight: 800; letter-spacing: -.03em; text-decoration: none; }
+    .back { font-size: .92rem; font-weight: 700; }
+    main { padding: clamp(2.5rem, 8vw, 6rem) 0 5rem; }
+    .eyebrow { color: var(--accent-dark); font-size: .82rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { max-width: 800px; margin: .65rem 0 1.1rem; font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .98; letter-spacing: -.06em; }
+    .lede { max-width: 720px; margin: 0 0 2rem; color: var(--muted); font-size: clamp(1.1rem, 2vw, 1.3rem); }
+    .button { display: inline-block; padding: .82rem 1.15rem; border: 2px solid var(--accent); border-radius: .35rem; color: white; background: var(--accent); font-weight: 750; text-decoration: none; }
+    .button:hover { border-color: var(--accent-dark); background: var(--accent-dark); }
+    .terms { margin-left: .8rem; color: var(--muted); font-size: .92rem; }
+    .summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: clamp(3rem, 8vw, 6rem); }
+    .summary div, .panel { padding: 1.35rem; border: 1px solid var(--line); border-radius: .6rem; background: rgb(255 253 247 / 82%); }
+    .summary strong { display: block; font-size: 1.35rem; letter-spacing: -.03em; }
+    .summary span { color: var(--muted); }
+    .details { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    .panel h2 { margin: 0 0 1rem; font-size: 1.45rem; letter-spacing: -.025em; }
+    ul { margin: 0; padding-left: 1.25rem; }
+    li { padding: .25rem 0 .5rem .25rem; }
+    li::marker { color: var(--accent); }
+    .boundary { margin-top: 1rem; padding: 1.2rem 1.4rem; border-left: 4px solid var(--warm); background: var(--panel); }
+    .process { margin-top: clamp(3rem, 8vw, 5rem); }
+    .process h2 { margin-bottom: .7rem; font-size: clamp(1.9rem, 4vw, 2.8rem); letter-spacing: -.04em; }
+    .process ol { max-width: 750px; padding-left: 1.5rem; }
+    .cta { margin-top: 3rem; padding: clamp(1.5rem, 5vw, 2.5rem); border-radius: .7rem; color: white; background: #15251d; }
+    .cta h2 { margin: 0 0 .5rem; font-size: clamp(1.7rem, 4vw, 2.4rem); }
+    .cta p { margin: 0 0 1.25rem; color: #d9e2dc; }
+    .cta .button { border-color: #7bd8bd; color: #102119; background: #7bd8bd; }
+    footer { padding: 2rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    @media (max-width: 700px) {
+      .summary, .details { grid-template-columns: 1fr; }
+      .terms { display: block; margin: .7rem 0 0; }
+      header { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="../" aria-label="Fablgen home">fablgen</a>
+    <a class="back" href="../">All fixed-price services</a>
+  </header>
+
+  <main class="wrap">
+    <section aria-labelledby="page-title">
+      <div class="eyebrow">Static-site contact-form repair</div>
+      <h1 id="page-title">Let visitors send the enquiry without opening an email app.</h1>
+      <p class="lede">I replace one mail-client-dependent or unclear contact form with an in-browser submission flow, visible status messages, basic spam friction, and honest fallbacks.</p>
+      <a class="button" href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml&amp;title=Work%20request%3A%20contact-form%20repair">Request the £35 repair</a>
+      <span class="terms">No upfront payment · one working day after acceptance</span>
+    </section>
+
+    <section class="summary" aria-label="Offer summary">
+      <div><strong>£35 fixed</strong><span>for one form on one public website</span></div>
+      <div><strong>Review first</strong><span>payment is due after the agreed checks pass</span></div>
+      <div><strong>No inbox access</strong><span>customer messages remain under the owner’s control</span></div>
+    </section>
+
+    <section class="details" aria-label="Scope and acceptance checks">
+      <article class="panel">
+        <h2>Included</h2>
+        <ul>
+          <li>Connect the form to an owner-controlled Formspree or comparable endpoint.</li>
+          <li>Preserve visible phone and email fallbacks.</li>
+          <li>Add required-field validation and a honeypot field.</li>
+          <li>Show pending, success, and error states in the page.</li>
+          <li>Provide short setup and maintenance notes.</li>
+          <li>Include one revision within the agreed scope.</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <h2>Acceptance checks</h2>
+        <ul>
+          <li>A valid test submission reaches the owner-approved endpoint.</li>
+          <li>No desktop email application is required to submit.</li>
+          <li>Missing required details produce a useful message.</li>
+          <li>Success and failure are announced clearly on the page.</li>
+          <li>The form remains usable at common phone and desktop widths.</li>
+          <li>The existing site design and direct-contact options remain intact.</li>
+        </ul>
+      </article>
+    </section>
+
+    <aside class="boundary">
+      <strong>Privacy boundary:</strong> I do not request inbox credentials, private customer messages, or production secrets. The owner creates or approves the submission endpoint and verifies receipt. Delivery is not claimed until that end-to-end check succeeds.
+    </aside>
+
+    <section class="process" aria-labelledby="process-title">
+      <div class="eyebrow">Small and reviewable</div>
+      <h2 id="process-title">How the repair works</h2>
+      <ol>
+        <li><strong>You share the public page or repository.</strong> Do not include credentials or private data.</li>
+        <li><strong>I confirm the scope in writing.</strong> If the form needs more than this offer covers, I quote before starting.</li>
+        <li><strong>I deliver a pull request or source archive.</strong> You receive the changed code, test evidence, and setup notes.</li>
+        <li><strong>You approve the receipt test.</strong> The £35 becomes due only after the written acceptance checks are met.</li>
+      </ol>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+      <h2 id="cta-title">Have a form that opens the wrong app—or gives no useful feedback?</h2>
+      <p>Open a public work request with the page URL and the outcome you want. No secrets are needed.</p>
+      <a class="button" href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml&amp;title=Work%20request%3A%20contact-form%20repair">Request a fixed-price quote</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Operated by a person using an AI coding agent. Scope, test results, delivery status, and revenue claims are reported accurately.</div>
+  </footer>
+</body>
+</html>
