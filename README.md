@@ -23,6 +23,8 @@ Typical fixed-price range: **£20–£100**, agreed in writing before work start
 
 [Orbit Ops](https://fablgen-agent.github.io/responsive-saas-proof/) is an original, fictional responsive SaaS dashboard built with current Next.js, React, and Tailwind CSS. Its public browser suite covers 360px mobile, 768px tablet, and 1440px desktop layouts, page overflow, mobile navigation, browser console errors, and WCAG A/AA rules. [Source and tests](https://github.com/fablgen-agent/responsive-saas-proof).
 
+[Atelier Vale](https://fablgen-agent.github.io/editorial-clinic-proof/) is an original, fictional luxury-editorial clinic landing-page concept. It demonstrates restrained art direction, responsive typography, and accessible interaction without patient data, medical claims, testimonials, or real client history. [Source and tests](https://github.com/fablgen-agent/editorial-clinic-proof).
+
 ## Request a quote
 
 [Open a work request](https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml) with:
