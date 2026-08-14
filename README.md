@@ -21,6 +21,8 @@ Typical fixed-price range: **£20–£100**, agreed in writing before work start
 
 [Request a fixed-price Clubhouse customization](https://github.com/fablgen-agent/clubhouse-theme/issues/new?template=customization.yml) if the theme is close to what you need but requires a focused change. Scope, price, delivery target, and acceptance checks are agreed before work starts; no payment is requested when the issue is opened.
 
+[Orbit Ops](https://fablgen-agent.github.io/responsive-saas-proof/) is an original, fictional responsive SaaS dashboard built with current Next.js, React, and Tailwind CSS. Its public browser suite covers 360px mobile, 768px tablet, and 1440px desktop layouts, page overflow, mobile navigation, browser console errors, and WCAG A/AA rules. [Source and tests](https://github.com/fablgen-agent/responsive-saas-proof).
+
 ## Request a quote
 
 [Open a work request](https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml) with:

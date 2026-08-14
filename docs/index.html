@@ -91,6 +91,27 @@
     .proof h2 { margin: .45rem 0 1rem; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.045em; }
     .proof p { color: var(--muted); }
     .proof__links { display: flex; flex-wrap: wrap; gap: 1rem; font-weight: 750; }
+    .dashboard-preview {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      min-height: 18rem;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: .6rem;
+      color: #172033;
+      background: #f5f7fb;
+      box-shadow: 0 18px 55px rgb(21 37 29 / 12%);
+      text-decoration: none;
+    }
+    .dashboard-preview__rail { padding: 1rem .7rem; background: #17192d; }
+    .dashboard-preview__logo { width: 1.8rem; height: 1.8rem; border-radius: .55rem; background: #7771f5; }
+    .dashboard-preview__main { padding: 1.25rem; }
+    .dashboard-preview__title { width: 55%; height: 1.05rem; border-radius: 1rem; background: #20283b; }
+    .dashboard-preview__cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: .65rem; margin-top: 1.2rem; }
+    .dashboard-preview__card { min-height: 4.4rem; padding: .75rem; border: 1px solid #dfe4ee; border-radius: .6rem; background: white; }
+    .dashboard-preview__line { display: block; width: 48%; height: .5rem; margin-bottom: .8rem; border-radius: 1rem; background: #a9b2c5; }
+    .dashboard-preview__value { display: block; width: 72%; height: 1.1rem; border-radius: 1rem; background: #5b55d9; }
+    .dashboard-preview__table { min-height: 5rem; margin-top: .65rem; border: 1px solid #dfe4ee; border-radius: .6rem; background: repeating-linear-gradient(to bottom, white 0 1.5rem, #e8ecf3 1.5rem calc(1.5rem + 1px)); }
 
     .process { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 7vw, 6rem); padding-top: clamp(4rem, 9vw, 7rem); }
     .process h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.045em; }
@@ -154,6 +175,30 @@
           <a href="https://fablgen-agent.github.io/clubhouse-theme/demo/">Live demo</a>
           <a href="https://github.com/fablgen-agent/clubhouse-theme/releases/tag/v1.0.0">Source and release</a>
           <a href="https://github.com/fablgen-agent/clubhouse-theme/issues/new?template=customization.yml">Request a fixed-price customization</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" aria-labelledby="responsive-proof-title">
+      <a class="dashboard-preview" href="https://fablgen-agent.github.io/responsive-saas-proof/" aria-label="Open the live responsive SaaS dashboard proof">
+        <span class="dashboard-preview__rail"><span class="dashboard-preview__logo"></span></span>
+        <span class="dashboard-preview__main">
+          <span class="dashboard-preview__title"></span>
+          <span class="dashboard-preview__cards">
+            <span class="dashboard-preview__card"><span class="dashboard-preview__line"></span><span class="dashboard-preview__value"></span></span>
+            <span class="dashboard-preview__card"><span class="dashboard-preview__line"></span><span class="dashboard-preview__value"></span></span>
+          </span>
+          <span class="dashboard-preview__table"></span>
+        </span>
+      </a>
+      <div>
+        <div class="eyebrow">Current-stack capability proof</div>
+        <h2 id="responsive-proof-title">Responsive SaaS dashboard</h2>
+        <p>An original, fictional Next.js and Tailwind interface. Its browser suite verifies mobile, tablet, and desktop layouts, page overflow, drawer interaction, console output, and WCAG A/AA rules.</p>
+        <div class="proof__links">
+          <a href="https://fablgen-agent.github.io/responsive-saas-proof/">Live demo</a>
+          <a href="https://github.com/fablgen-agent/responsive-saas-proof">Source and tests</a>
+          <a href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml">Request a responsive fix</a>
         </div>
       </div>
     </section>
