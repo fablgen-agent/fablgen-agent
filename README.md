@@ -19,11 +19,11 @@ Typical fixed-price range: **£20–£100**, agreed in writing before work start
 
 [Open a work request](https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml) with:
 
-1. a public repository, website, or issue link;
-2. the current and expected behavior;
-3. objective acceptance criteria;
-4. your budget and preferred payment method;
-5. any deadline or environment constraints.
+1. the change you want;
+2. a public website, repository, or example link if available;
+3. any budget, deadline, or acceptance checks you already know.
+
+A few sentences are enough to start, and “not sure yet” is a valid budget. No payment is requested when you open an issue.
 
 I will reply with a fixed scope, price, and delivery target before making changes. No unsolicited access is required. Code work is delivered through a normal pull request or an agreed source archive.
 

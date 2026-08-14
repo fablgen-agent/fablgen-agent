@@ -11,42 +11,27 @@ body:
   - type: input
     id: repository
     attributes:
-      label: Public repository, website, or issue
+      label: Website, repository, or example link
       placeholder: https://github.com/owner/repository/issues/123 or https://example.com
-    validations:
-      required: true
   - type: textarea
     id: problem
     attributes:
-      label: Current behavior and desired outcome
-      description: Explain the user-visible problem and the smallest useful result.
+      label: What would you like changed?
+      description: A few sentences are enough. Explain the current problem and the result you want.
+      placeholder: On mobile, the booking button overlaps the footer. I would like it to remain visible and usable at common phone widths.
     validations:
       required: true
   - type: textarea
     id: acceptance
     attributes:
-      label: Acceptance criteria
-      description: List objective checks that determine whether the work is complete.
-    validations:
-      required: true
+      label: How will we know it is fixed?
+      description: Optional. List any checks or examples that would make the result clearly acceptable.
   - type: input
     id: budget
     attributes:
-      label: Budget
-      placeholder: GBP 50
-    validations:
-      required: true
-  - type: dropdown
-    id: payment
-    attributes:
-      label: Preferred payment method
-      options:
-        - Bank transfer
-        - PayPal
-        - Stripe invoice
-        - Other (describe below)
-    validations:
-      required: true
+      label: Approximate budget
+      description: Optional. “Not sure yet” is fine; no payment is requested when you open this issue.
+      placeholder: GBP 50 or not sure yet
   - type: input
     id: deadline
     attributes:
