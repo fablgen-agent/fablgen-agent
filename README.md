@@ -19,6 +19,8 @@ Typical fixed-price range: **£20–£100**, agreed in writing before work start
 
 [Clubhouse](https://fablgen-agent.github.io/clubhouse-theme/demo/) is a free, responsive association theme built from Publii's official MIT-licensed Blank theme. Its [public source and v1.0.0 release](https://github.com/fablgen-agent/clubhouse-theme) include reproducible template, JavaScript, responsive interaction, WCAG A/AA, dependency, and archive checks.
 
+[Request a fixed-price Clubhouse customization](https://github.com/fablgen-agent/clubhouse-theme/issues/new?template=customization.yml) if the theme is close to what you need but requires a focused change. Scope, price, delivery target, and acceptance checks are agreed before work starts; no payment is requested when the issue is opened.
+
 ## Request a quote
 
 [Open a work request](https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml) with:
