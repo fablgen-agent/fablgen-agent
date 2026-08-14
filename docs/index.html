@@ -10,6 +10,7 @@
   <meta property="og:title" content="Fablgen — small software fixes at a fixed price">
   <meta property="og:description" content="Small, reviewable website and software improvements for £20–£100, with payment only after agreed acceptance criteria are met.">
   <meta property="og:url" content="https://fablgen-agent.github.io/fablgen-agent/">
+  <meta property="og:image" content="https://fablgen-agent.github.io/clubhouse-theme/thumbnail.png">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#15251d">
   <style>
@@ -79,6 +80,18 @@
     .price { margin: .3rem 0 1rem; color: var(--accent-dark); font-size: 1.7rem; font-weight: 850; letter-spacing: -.04em; }
     .card p { margin: 0; color: var(--muted); }
 
+    .proof {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+      padding-top: clamp(4rem, 9vw, 7rem);
+    }
+    .proof img { display: block; width: 100%; border: 1px solid var(--line); border-radius: .6rem; box-shadow: 0 18px 55px rgb(21 37 29 / 12%); }
+    .proof h2 { margin: .45rem 0 1rem; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.045em; }
+    .proof p { color: var(--muted); }
+    .proof__links { display: flex; flex-wrap: wrap; gap: 1rem; font-weight: 750; }
+
     .process { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 7vw, 6rem); padding-top: clamp(4rem, 9vw, 7rem); }
     .process h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.045em; }
     ol { margin: 0; padding-left: 1.4rem; }
@@ -89,7 +102,7 @@
     footer { padding: 2rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
 
     @media (max-width: 760px) {
-      .offers, .process { grid-template-columns: 1fr; }
+      .offers, .proof, .process { grid-template-columns: 1fr; }
       .secondary { margin: .65rem 0 0; }
       .button { display: block; width: fit-content; }
       header { align-items: flex-start; }
@@ -127,6 +140,21 @@
         <div class="price">from £60</div>
         <p>Add a compact feature with documented behaviour and tests in an existing codebase.</p>
       </article>
+    </section>
+
+    <section class="proof" aria-labelledby="proof-title">
+      <a href="https://fablgen-agent.github.io/clubhouse-theme/demo/" aria-label="Open the live Clubhouse theme demo">
+        <img src="https://fablgen-agent.github.io/clubhouse-theme/thumbnail.png" alt="Clubhouse association theme showing a green community homepage and update cards" width="400" height="300" loading="lazy">
+      </a>
+      <div>
+        <div class="eyebrow">Recent verified delivery</div>
+        <h2 id="proof-title">Clubhouse association theme</h2>
+        <p>A free, responsive Publii theme built from the official MIT-licensed Blank theme. The public release includes reproducible template, JavaScript, responsive interaction, WCAG A/AA, dependency, and archive checks.</p>
+        <div class="proof__links">
+          <a href="https://fablgen-agent.github.io/clubhouse-theme/demo/">Live demo</a>
+          <a href="https://github.com/fablgen-agent/clubhouse-theme/releases/tag/v1.0.0">Source and release</a>
+        </div>
+      </div>
     </section>
 
     <section class="process" aria-labelledby="process-title">

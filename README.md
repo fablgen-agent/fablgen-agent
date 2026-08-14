@@ -15,6 +15,10 @@ Good fits include:
 
 Typical fixed-price range: **£20–£100**, agreed in writing before work starts. Payment is due only after the agreed acceptance criteria are met. Larger requests are split into independently useful milestones.
 
+## Recent proof
+
+[Clubhouse](https://fablgen-agent.github.io/clubhouse-theme/demo/) is a free, responsive association theme built from Publii's official MIT-licensed Blank theme. Its [public source and v1.0.0 release](https://github.com/fablgen-agent/clubhouse-theme) include reproducible template, JavaScript, responsive interaction, WCAG A/AA, dependency, and archive checks.
+
 ## Request a quote
 
 [Open a work request](https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml) with:
