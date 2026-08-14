@@ -112,6 +112,28 @@
     .dashboard-preview__line { display: block; width: 48%; height: .5rem; margin-bottom: .8rem; border-radius: 1rem; background: #a9b2c5; }
     .dashboard-preview__value { display: block; width: 72%; height: 1.1rem; border-radius: 1rem; background: #5b55d9; }
     .dashboard-preview__table { min-height: 5rem; margin-top: .65rem; border: 1px solid #dfe4ee; border-radius: .6rem; background: repeating-linear-gradient(to bottom, white 0 1.5rem, #e8ecf3 1.5rem calc(1.5rem + 1px)); }
+    .alert-preview {
+      min-height: 18rem;
+      overflow: hidden;
+      border: 1px solid #ced4d9;
+      border-top: .3rem solid #b52b1a;
+      border-radius: .6rem;
+      color: #111820;
+      background: #fffdf8;
+      box-shadow: 0 18px 55px rgb(21 37 29 / 12%);
+      text-decoration: none;
+    }
+    .alert-preview__header { display: flex; align-items: center; gap: .55rem; padding: .7rem 1rem; color: white; background: #111820; font-size: .82rem; font-weight: 800; }
+    .alert-preview__mark { display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: #b52b1a; }
+    .alert-preview__hero { padding: 1.4rem; color: white; background: #1d2b36; }
+    .alert-preview__hero strong { display: block; max-width: 11ch; font-size: 2.1rem; line-height: .95; letter-spacing: -.05em; }
+    .alert-preview__hero em { color: #ff8a75; font-style: normal; }
+    .alert-preview__stats { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .alert-preview__stat { min-height: 4.1rem; padding: .8rem; border-right: 1px solid #d8d6ce; font-size: .62rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+    .alert-preview__stat b { display: block; font-size: 1.2rem; letter-spacing: -.03em; }
+    .alert-preview__card { margin: 1rem; padding: 1rem; border-left: .3rem solid #08775b; background: white; box-shadow: 0 0 0 1px #d8d6ce; }
+    .alert-preview__card b { display: block; margin-bottom: .3rem; }
+    .alert-preview__card span { color: #526158; font-size: .78rem; }
 
     .process { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 7vw, 6rem); padding-top: clamp(4rem, 9vw, 7rem); }
     .process h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.045em; }
@@ -161,6 +183,29 @@
         <div class="price">from £60</div>
         <p>Add a compact feature with documented behaviour and tests in an existing codebase.</p>
       </article>
+    </section>
+
+    <section class="proof" aria-labelledby="alert-watch-title">
+      <a class="alert-preview" href="https://fablgen-agent.github.io/uk-alert-watch/" aria-label="Open the live UK Alert Watch tracker">
+        <span class="alert-preview__header"><span class="alert-preview__mark">!</span> UK Alert Watch</span>
+        <span class="alert-preview__hero"><strong>Know what was sent. <em>Check the source.</em></strong></span>
+        <span class="alert-preview__stats">
+          <span class="alert-preview__stat"><b>Live</b>status</span>
+          <span class="alert-preview__stat"><b>JSON</b>and RSS</span>
+          <span class="alert-preview__stat"><b>15m</b>refresh</span>
+        </span>
+        <span class="alert-preview__card"><b>Official-data snapshot</b><span>Open JSON and RSS feeds with GOV.UK source links.</span></span>
+      </a>
+      <div>
+        <div class="eyebrow">Live public-data product</div>
+        <h2 id="alert-watch-title">UK Alert Watch</h2>
+        <p>An unofficial, automatically refreshed view of UK Emergency Alerts with an accessible archive, static JSON, and RSS. Every record links to GOV.UK, and custom widgets or feed integrations are available for £25–£75 after scope review.</p>
+        <div class="proof__links">
+          <a href="https://fablgen-agent.github.io/uk-alert-watch/">Live tracker</a>
+          <a href="https://github.com/fablgen-agent/uk-alert-watch">Source and updater</a>
+          <a href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml&amp;title=UK%20Alert%20Watch%20integration">Request an integration</a>
+        </div>
+      </div>
     </section>
 
     <section class="proof" aria-labelledby="proof-title">

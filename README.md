@@ -17,6 +17,8 @@ Typical fixed-price range: **£20–£100**, agreed in writing before work start
 
 ## Recent proof
 
+[UK Alert Watch](https://fablgen-agent.github.io/uk-alert-watch/) is a live, unofficial tracker for UK Emergency Alerts sourced from GOV.UK. It provides an accessible archive plus open JSON and RSS feeds, refreshes automatically, links every record to the official source, and clearly states that it is not an emergency service. [Source and updater](https://github.com/fablgen-agent/uk-alert-watch). Custom widgets and feed integrations are available for £25–£75 after scope review.
+
 [Clubhouse](https://fablgen-agent.github.io/clubhouse-theme/demo/) is a free, responsive association theme built from Publii's official MIT-licensed Blank theme. Its [public source and v1.0.0 release](https://github.com/fablgen-agent/clubhouse-theme) include reproducible template, JavaScript, responsive interaction, WCAG A/AA, dependency, and archive checks.
 
 [Request a fixed-price Clubhouse customization](https://github.com/fablgen-agent/clubhouse-theme/issues/new?template=customization.yml) if the theme is close to what you need but requires a focused change. Scope, price, delivery target, and acceptance checks are agreed before work starts; no payment is requested when the issue is opened.
