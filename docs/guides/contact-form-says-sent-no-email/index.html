@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact form says sent but no email arrives? Five checks</title>
+  <meta name="description" content="A practical five-step check for static website contact forms that report success but do not deliver an enquiry, with a free private browser inspector.">
+  <link rel="canonical" href="https://fablgen-agent.github.io/fablgen-agent/guides/contact-form-says-sent-no-email/">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Contact form says sent but no email arrives? Five checks">
+  <meta property="og:description" content="Separate a reassuring success message from real form delivery with five reproducible checks.">
+  <meta property="og:url" content="https://fablgen-agent.github.io/fablgen-agent/guides/contact-form-says-sent-no-email/">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#15251d">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can a source-code check prove that a contact-form email arrives?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Source inspection can find missing or suspicious form configuration, but only an end-to-end submission using synthetic data and owner-confirmed receipt can prove delivery."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a mailto form a reliable website contact form?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. A mailto link depends on a correctly configured email application on the visitor's device and does not provide an in-browser submission flow. Keep a visible email address as a fallback, not as proof that the form sends."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I share an endpoint key or inbox password for diagnosis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Do not paste production secrets, inbox credentials, private customer messages, or personal data into a diagnostic tool or public work request. Use synthetic test data and keep endpoint ownership under the site owner's control."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --ink: #15251d;
+      --muted: #526158;
+      --paper: #f5f1e8;
+      --panel: #fffdf7;
+      --line: #d5d0c4;
+      --accent: #08775b;
+      --accent-dark: #075c49;
+      --warm: #e6a23c;
+      color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: radial-gradient(circle at 88% 8%, rgb(230 162 60 / 18%), transparent 24rem), var(--paper);
+      font: 17px/1.65 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: var(--accent-dark); }
+    a:focus-visible { outline: 3px solid var(--warm); outline-offset: 3px; }
+    .wrap { width: min(960px, calc(100% - 2rem)); margin-inline: auto; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; }
+    .brand { color: var(--ink); font-weight: 800; letter-spacing: -.03em; text-decoration: none; }
+    .back { font-size: .92rem; font-weight: 700; }
+    main { padding: clamp(2.5rem, 8vw, 6rem) 0 5rem; }
+    .eyebrow { color: var(--accent-dark); font-size: .82rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { max-width: 850px; margin: .65rem 0 1.1rem; font-size: clamp(2.6rem, 7vw, 5.35rem); line-height: .98; letter-spacing: -.06em; }
+    h2 { margin: 0 0 .75rem; font-size: clamp(1.6rem, 3.4vw, 2.25rem); line-height: 1.15; letter-spacing: -.035em; }
+    h3 { margin: 1.7rem 0 .45rem; font-size: 1.18rem; }
+    .lede { max-width: 760px; margin: 0 0 1.8rem; color: var(--muted); font-size: clamp(1.1rem, 2vw, 1.3rem); }
+    .button { display: inline-block; padding: .82rem 1.15rem; border: 2px solid var(--accent); border-radius: .35rem; color: white; background: var(--accent); font-weight: 750; text-decoration: none; }
+    .button:hover { border-color: var(--accent-dark); background: var(--accent-dark); }
+    .secondary { margin-left: .55rem; color: var(--accent-dark); background: transparent; }
+    .secondary:hover { color: white; }
+    .privacy { max-width: 760px; color: var(--muted); font-size: .92rem; }
+    .summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: clamp(3rem, 8vw, 5.5rem); }
+    .summary div, .step, .faq details { border: 1px solid var(--line); border-radius: .6rem; background: rgb(255 253 247 / 84%); }
+    .summary div { padding: 1.25rem; }
+    .summary strong { display: block; color: var(--accent-dark); font-size: 1.25rem; }
+    .summary span { color: var(--muted); }
+    .guide { display: grid; min-width: 0; gap: 1rem; margin-top: clamp(3rem, 8vw, 5.5rem); }
+    .guide > *, .step { min-width: 0; }
+    .step { padding: clamp(1.25rem, 4vw, 2rem); }
+    .step-number { display: inline-grid; place-items: center; width: 2.2rem; height: 2.2rem; margin-bottom: .8rem; border-radius: 50%; color: white; background: var(--accent); font-weight: 850; }
+    .step p { max-width: 780px; }
+    pre { max-width: 100%; overflow-x: auto; padding: 1rem; border: 1px solid #293d34; border-radius: .4rem; color: #edf7f2; background: #15251d; font: .9rem/1.55 ui-monospace, SFMono-Regular, Consolas, monospace; }
+    code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    :not(pre) > code { padding: .12em .3em; border-radius: .2rem; background: #e5e1d7; }
+    .result { margin: 1.2rem 0 0; padding: 1rem 1.15rem; border-left: 4px solid var(--warm); background: var(--panel); }
+    .result strong { display: block; }
+    .faq { margin-top: clamp(3rem, 8vw, 5rem); }
+    .faq details { margin-top: .75rem; padding: 1rem 1.15rem; }
+    .faq summary { cursor: pointer; font-weight: 800; }
+    .cta { margin-top: 3rem; padding: clamp(1.5rem, 5vw, 2.5rem); border-radius: .7rem; color: white; background: #15251d; }
+    .cta h2 { margin-bottom: .5rem; }
+    .cta p { max-width: 740px; color: #d9e2dc; }
+    .cta .button { border-color: #7bd8bd; color: #102119; background: #7bd8bd; }
+    .cta .secondary { border-color: #7bd8bd; color: #d9fff2; background: transparent; }
+    footer { padding: 2rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+    @media (max-width: 700px) {
+      .summary { grid-template-columns: 1fr; }
+      .secondary { margin: .65rem 0 0; }
+      .button { display: block; width: fit-content; }
+      header { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="../../" aria-label="Fablgen home">fablgen</a>
+    <a class="back" href="../../contact-form-repair/">Fixed £35 repair</a>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <header style="display:block; padding:0">
+        <div class="eyebrow">Practical guide · about eight minutes</div>
+        <h1>Contact form says “sent” but no email arrives?</h1>
+        <p class="lede">A success message proves that the page changed. It does not prove that a request left the browser, that a form service accepted it, or that the intended inbox received it. These five checks separate those stages.</p>
+        <a class="button" href="../../form-inspector/">Run the free source check</a>
+        <a class="button secondary" href="#five-checks">Read the five checks</a>
+        <p class="privacy">The browser inspector processes pasted HTML on your device and makes no inspector network request. Never paste secrets, private customer messages, or production submission data.</p>
+      </header>
+
+      <section class="summary" aria-label="Diagnostic layers">
+        <div><strong>Browser</strong><span>Did the page actually create a request?</span></div>
+        <div><strong>Endpoint</strong><span>Did the configured service accept it?</span></div>
+        <div><strong>Inbox</strong><span>Did the owner confirm receipt?</span></div>
+      </section>
+
+      <section class="guide" id="five-checks" aria-labelledby="checks-title">
+        <div>
+          <div class="eyebrow">Reproducible diagnosis</div>
+          <h2 id="checks-title">Five checks, in order</h2>
+        </div>
+
+        <section class="step" aria-labelledby="check-one">
+          <span class="step-number">1</span>
+          <h2 id="check-one">Check whether the form submits anywhere</h2>
+          <p>Inspect the opening <code>&lt;form&gt;</code> tag. An empty action, <code>action="#"</code>, or a JavaScript handler that only changes visible state can produce a convincing “sent” message without delivering anything.</p>
+          <pre><code>&lt;form action="#"&gt;
+  ...
+&lt;/form&gt;</code></pre>
+          <p>A <code>mailto:</code> action is different but still fragile: it asks the visitor’s device to open an email application. It is not an in-browser delivery endpoint.</p>
+          <div class="result"><strong>Pass condition</strong>The form points to an owner-approved HTTPS endpoint or application route, and the submit handler sends a real request before showing success.</div>
+        </section>
+
+        <section class="step" aria-labelledby="check-two">
+          <span class="step-number">2</span>
+          <h2 id="check-two">Check every value has a field name</h2>
+          <p>Browsers submit successful controls by name. A visitor can type into an email input or message box that looks correct, but a missing <code>name</code> means that value is normally omitted from a standard form submission.</p>
+          <pre><code>&lt;input type="email" name="email" required&gt;
+&lt;textarea name="message" required&gt;&lt;/textarea&gt;</code></pre>
+          <div class="result"><strong>Pass condition</strong>Every enabled value the owner expects to receive has the exact field name required by the receiving endpoint.</div>
+        </section>
+
+        <section class="step" aria-labelledby="check-three">
+          <span class="step-number">3</span>
+          <h2 id="check-three">Remove placeholders without exposing secrets</h2>
+          <p>Copied examples often retain values such as <code>YOUR_ACCESS_KEY</code>, <code>example@example.com</code>, or an endpoint ending in <code>/example</code>. Those values may allow the interface to render while preventing real routing.</p>
+          <p>Do not fix this by committing an inbox password or private API secret to frontend code. Use the form provider’s documented public form identifier, an owner-controlled backend route, or deployment-time server configuration as appropriate.</p>
+          <div class="result"><strong>Pass condition</strong>No placeholder remains, and any sensitive credential stays outside public HTML and client-side JavaScript.</div>
+        </section>
+
+        <section class="step" aria-labelledby="check-four">
+          <span class="step-number">4</span>
+          <h2 id="check-four">Separate endpoint acceptance from inbox receipt</h2>
+          <p>An HTTP success response means the endpoint accepted or processed a request according to its own contract. It does not, by itself, prove that an email reached the owner’s inbox. Delivery can still depend on account activation, recipient confirmation, provider rules, spam filtering, or downstream mail handling.</p>
+          <p>Use synthetic data such as “Website delivery test — 2026-08-15” and ask the endpoint owner to confirm the exact message arrived. Do not use a real customer’s details for testing.</p>
+          <div class="result"><strong>Pass condition</strong>The browser receives the expected endpoint response and the authorised owner independently confirms the matching synthetic message.</div>
+        </section>
+
+        <section class="step" aria-labelledby="check-five">
+          <span class="step-number">5</span>
+          <h2 id="check-five">Test failure as carefully as success</h2>
+          <p>A reliable form disables duplicate submits while sending, announces its status, and shows an honest retry path when the network or endpoint fails. It must not display success unconditionally after a timer or local state change.</p>
+          <p>Test required-field validation, an endpoint rejection in a non-production environment, keyboard submission, and a common phone width. Keep visible phone or email details as a fallback when the business supports them.</p>
+          <div class="result"><strong>Pass condition</strong>Success appears only after the expected response; failures remain failures, preserve useful input where safe, and tell the visitor what to do next.</div>
+        </section>
+      </section>
+
+      <section class="faq" aria-labelledby="faq-title">
+        <div class="eyebrow">Short answers</div>
+        <h2 id="faq-title">Contact-form delivery FAQ</h2>
+        <details>
+          <summary>Can a source-code check prove that email arrives?</summary>
+          <p>No. It can find suspicious or missing configuration. Only a synthetic end-to-end test plus owner-confirmed receipt proves the full path.</p>
+        </details>
+        <details>
+          <summary>Does a mailto form count as a working form?</summary>
+          <p>It can be a visible fallback, but it depends on the visitor having a configured email application and is not an in-browser submission flow.</p>
+        </details>
+        <details>
+          <summary>Should I share an endpoint key or inbox password?</summary>
+          <p>No. Keep production secrets, inbox access, private messages, and customer data private. A diagnosis should begin with public source and synthetic test data.</p>
+        </details>
+      </section>
+
+      <section class="cta" aria-labelledby="cta-title">
+        <h2 id="cta-title">Want the source checked first?</h2>
+        <p>Static Form Inspector can identify inert actions, placeholder endpoint tokens, contact-like GET forms, unnamed controls, and unclosed forms without submitting data. If implementation is needed, the fixed £35 repair covers one public form with written acceptance checks and payment after review.</p>
+        <a class="button" href="../../form-inspector/">Inspect HTML in the browser</a>
+        <a class="button secondary" href="../../contact-form-repair/">See the £35 repair scope</a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="wrap">Operated by a person using an AI coding agent. Diagnostic limits, delivery status, and revenue claims are reported accurately. <a href="../../telegram-privacy/">Telegram privacy</a>.</div>
+  </footer>
+</body>
+</html>
