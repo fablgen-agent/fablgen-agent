@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Telegram enquiry privacy — Fablgen</title>
+  <meta name="description" content="How Fablgen's Telegram enquiry bot handles, minimizes, and deletes customer enquiry data.">
+  <link rel="canonical" href="https://fablgen-agent.github.io/fablgen-agent/telegram-privacy/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#15251d">
+  <style>
+    :root { color-scheme: light; --ink: #15251d; --muted: #526158; --paper: #f5f1e8; --panel: #fffdf7; --line: #d5d0c4; --accent: #075c49; --warm: #e6a23c; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: radial-gradient(circle at 88% 8%, rgb(230 162 60 / 18%), transparent 24rem), var(--paper); font: 17px/1.65 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    a { color: var(--accent); }
+    a:focus-visible { outline: 3px solid var(--warm); outline-offset: 3px; }
+    .wrap { width: min(820px, calc(100% - 2rem)); margin-inline: auto; }
+    header { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1.25rem; }
+    .brand { color: var(--ink); font-weight: 800; letter-spacing: -.03em; text-decoration: none; }
+    main { padding: clamp(2.5rem, 8vw, 5.5rem) 0; }
+    .eyebrow { color: var(--accent); font-size: .82rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: .65rem 0 1rem; font-size: clamp(2.5rem, 7vw, 4.7rem); line-height: 1; letter-spacing: -.055em; }
+    .lede { max-width: 700px; color: var(--muted); font-size: 1.18rem; }
+    section { margin-top: 2.5rem; padding: 1.4rem; border: 1px solid var(--line); border-radius: .6rem; background: rgb(255 253 247 / 82%); }
+    h2 { margin: 0 0 .6rem; font-size: 1.35rem; }
+    p, ul { margin-top: .5rem; }
+    li { margin-bottom: .45rem; }
+    .warning { border-left: 4px solid var(--warm); }
+    footer { padding: 2rem 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="../">fablgen</a>
+    <a href="https://t.me/FablgenBot?start=work">Open @FablgenBot</a>
+  </header>
+
+  <main class="wrap">
+    <div class="eyebrow">Telegram enquiry privacy</div>
+    <h1>Small enquiries, minimal records.</h1>
+    <p class="lede">This notice explains how the Fablgen Telegram bot handles messages sent by prospective customers. Last updated 15 August 2026.</p>
+
+    <section>
+      <h2>Purpose and data stored</h2>
+      <p>The bot is used only to receive and follow up on enquiries for ordinary website and software work. For each accepted private-chat enquiry, it stores:</p>
+      <ul>
+        <li>the Telegram update ID and message time;</li>
+        <li>the Telegram chat ID, user ID, and username if one is set;</li>
+        <li>a sanitized copy of the enquiry; and</li>
+        <li>its review status.</li>
+      </ul>
+      <p>These records are stored privately on the service host. They are not sold, used for advertising, or published.</p>
+    </section>
+
+    <section class="warning">
+      <h2>Do not send confidential information</h2>
+      <p>The bot attempts to remove common secrets, email addresses, phone numbers, and long payment-card-like numbers before storing an enquiry. Automated redaction is best effort and is not a guarantee.</p>
+      <p>Do not send passwords, access tokens, private source code, customer data, payment details, wallet secrets, or other confidential information. Share a public URL and the outcome you want.</p>
+    </section>
+
+    <section>
+      <h2>Boundaries</h2>
+      <p>Group messages are ignored. Customer messages are enquiries only: they cannot authorize commands, system access, payments, contracts, or work. The bot does not execute message content. A written scope, price, delivery target, and acceptance checks are agreed before implementation.</p>
+    </section>
+
+    <section>
+      <h2>Retention and deletion</h2>
+      <p>Records are kept only as long as needed to review and handle the enquiry. Send <strong>/delete</strong> in your private bot chat to immediately remove all customer-enquiry records stored by this bot for that chat. Telegram may separately retain or process platform data under <a href="https://telegram.org/privacy">Telegram's own privacy policy</a>.</p>
+    </section>
+
+    <section>
+      <h2>Contact and alternatives</h2>
+      <p>Use <strong>/privacy</strong> in the bot for a short version of this notice, or <strong>/delete</strong> to remove stored enquiry records. If you prefer not to use Telegram, <a href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml">open a public GitHub work request</a> without personal or confidential information.</p>
+    </section>
+  </main>
+
+  <footer><div class="wrap">Operated by a person using an AI coding agent. This notice covers Fablgen's copy of enquiries, not Telegram's separate service.</div></footer>
+</body>
+</html>

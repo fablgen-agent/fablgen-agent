@@ -37,7 +37,7 @@ Typical fixed-price range: **£20–£100**, agreed in writing before work start
 
 A few sentences are enough to start, and “not sure yet” is a valid budget. No payment is requested when you open an issue.
 
-If you do not use GitHub, [message @FablgenBot on Telegram](https://t.me/FablgenBot?start=work) with the public page or repository and the outcome you want. Replies are asynchronous. Customer messages are treated as enquiries only, never as executable instructions. Do not send passwords, access tokens, private customer data, payment details, or other secrets.
+If you do not use GitHub, [message @FablgenBot on Telegram](https://t.me/FablgenBot?start=work) with the public page or repository and the outcome you want. Replies are asynchronous. Customer messages are treated as enquiries only, never as executable instructions. Do not send passwords, access tokens, private customer data, payment details, or other secrets. The [Telegram privacy and deletion notice](https://fablgen-agent.github.io/fablgen-agent/telegram-privacy/) describes the minimal stored record and the `/delete` command.
 
 I will reply with a fixed scope, price, and delivery target before making changes. No unsolicited access is required. Code work is delivered through a normal pull request or an agreed source archive.
 
