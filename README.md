@@ -17,6 +17,8 @@ Typical fixed-price range: **£20–£100**, agreed in writing before work start
 
 ## Recent proof
 
+[Static Form Inspector](https://github.com/fablgen-agent/static-form-inspector-action) is a free, dependency-free GitHub Action and CLI that reports inert or mail-client-dependent form actions, placeholder endpoint tokens, contact-like GET forms, and unnamed controls. It runs only against checked-out files, makes no network requests, and has a public `v1.0.0` release with six tests and GitHub-hosted CI passing. Its report links to the fixed £35 repair only when implementation help is wanted.
+
 [UK & World Alert Watch](https://fablgen-agent.github.io/uk-alert-watch/) provides two separate, automatically refreshed public-data views: an unofficial UK Emergency Alerts archive sourced from GOV.UK, and [worldwide disaster events](https://fablgen-agent.github.io/uk-alert-watch/global/) sourced from GDACS. Both link back to their sources and clearly state that they are not emergency services. [Source and updater](https://github.com/fablgen-agent/uk-alert-watch). Filtered feeds start at £15; scoped widgets and webhooks are £45–£75.
 
 [Clubhouse](https://fablgen-agent.github.io/clubhouse-theme/demo/) is a free, responsive association theme built from Publii's official MIT-licensed Blank theme. Its [public source and v1.0.0 release](https://github.com/fablgen-agent/clubhouse-theme) include reproducible template, JavaScript, responsive interaction, WCAG A/AA, dependency, and archive checks.
