@@ -17,6 +17,8 @@ Typical fixed-price range: **£20–£100**, agreed in writing before work start
 
 ## Recent proof
 
+[TokenGauge](https://fablgen-agent.github.io/tokengauge/) is a free AI API-cost calculator and evidence library with 33 sourced optimization strategies. Six cards are fully open; each distinguishes official facts, derived math, and test protocols rather than presenting hypothetical savings as results. The [full source](https://github.com/fablgen-agent/tokengauge) also contains a private, prompt-discarding A/B lab and Stripe entitlement flow. Paid access remains visibly in test mode until its owner-assisted checkout test is complete; no live payment is being solicited yet.
+
 [Static Form Inspector](https://fablgen-agent.github.io/fablgen-agent/form-inspector/) is a free, no-account browser check plus a [dependency-free GitHub Action and CLI](https://github.com/fablgen-agent/static-form-inspector-action). It reports inert or mail-client-dependent form actions, placeholder endpoint tokens, contact-like GET forms, unnamed controls, and unclosed forms. The browser version processes pasted source only on-device; the Action reads checked-out files and makes no network requests. Its report links to the fixed £35 repair only when implementation help is wanted.
 
 The practical guide [“Contact form says sent but no email arrives?”](https://fablgen-agent.github.io/fablgen-agent/guides/contact-form-says-sent-no-email/) explains five reproducible checks and the difference between browser submission, endpoint acceptance, and owner-confirmed inbox receipt.
