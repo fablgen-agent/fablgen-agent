@@ -136,6 +136,25 @@
     .alert-preview__card { margin: 1rem; padding: 1rem; border-left: .3rem solid #08775b; background: white; box-shadow: 0 0 0 1px #d8d6ce; }
     .alert-preview__card b { display: block; margin-bottom: .3rem; }
     .alert-preview__card span { color: #526158; font-size: .78rem; }
+    .token-preview {
+      min-height: 18rem;
+      overflow: hidden;
+      border: 1px solid #344248;
+      border-radius: .6rem;
+      color: white;
+      background: #10191d;
+      box-shadow: 0 18px 55px rgb(21 37 29 / 12%);
+      text-decoration: none;
+    }
+    .token-preview__header { display: flex; align-items: center; gap: .55rem; padding: .8rem 1rem; border-bottom: 1px solid rgb(255 255 255 / 12%); font-size: .82rem; font-weight: 800; }
+    .token-preview__mark { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: .5rem; color: #10191d; background: #c9f45d; font-family: monospace; }
+    .token-preview__hero { display: block; padding: 1.5rem 1.4rem 1rem; }
+    .token-preview__hero strong { display: block; max-width: 10ch; font-size: 2.35rem; line-height: .96; letter-spacing: -.055em; }
+    .token-preview__hero em { color: #c9f45d; font-style: normal; }
+    .token-preview__metrics { display: grid; grid-template-columns: repeat(3, 1fr); margin: 1rem; border: 1px solid rgb(255 255 255 / 13%); }
+    .token-preview__metric { min-height: 4.1rem; padding: .75rem; border-right: 1px solid rgb(255 255 255 / 13%); color: #aebabc; font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+    .token-preview__metric:last-child { border-right: 0; }
+    .token-preview__metric b { display: block; color: #c9f45d; font-size: 1.2rem; letter-spacing: -.03em; }
 
     .process { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 7vw, 6rem); padding-top: clamp(4rem, 9vw, 7rem); }
     .process h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.045em; }
@@ -189,6 +208,27 @@
         <div class="price">from £60</div>
         <p>Add a compact feature with documented behaviour and tests in an existing codebase.</p>
       </article>
+    </section>
+
+    <section class="proof" aria-labelledby="tokengauge-title">
+      <a class="token-preview" href="https://fablgen-agent.github.io/tokengauge/" aria-label="Open the free TokenGauge calculator and evidence library">
+        <span class="token-preview__header"><span class="token-preview__mark">T</span> TokenGauge</span>
+        <span class="token-preview__hero"><strong>Spend tokens on answers. <em>Not overhead.</em></strong></span>
+        <span class="token-preview__metrics">
+          <span class="token-preview__metric"><b>33</b>strategies</span>
+          <span class="token-preview__metric"><b>3</b>evidence grades</span>
+          <span class="token-preview__metric"><b>0</b>prompts stored</span>
+        </span>
+      </a>
+      <div>
+        <div class="eyebrow">Free AI cost workbench</div>
+        <h2 id="tokengauge-title">TokenGauge</h2>
+        <p>A free API-cost calculator and six fully open strategy cards backed by primary sources. The complete project contains 33 cards and a private A/B lab that stores token totals rather than prompts or outputs. Paid access is still in test mode and is not yet being sold.</p>
+        <div class="proof__links">
+          <a href="https://fablgen-agent.github.io/tokengauge/">Free calculator and library</a>
+          <a href="https://github.com/fablgen-agent/tokengauge">Source and tests</a>
+        </div>
+      </div>
     </section>
 
     <section class="proof" aria-labelledby="alert-watch-title">
