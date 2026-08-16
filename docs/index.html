@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fablgen — small software fixes at a fixed price</title>
-  <meta name="description" content="Small, reviewable website and software improvements for £20–£100, with a written scope and payment only after acceptance criteria are met.">
+  <meta name="description" content="Reviewable software fixes and customer-owned private collaboration deployments, with a written scope and payment only after acceptance criteria are met.">
   <link rel="canonical" href="https://fablgen-agent.github.io/fablgen-agent/">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Fablgen — small software fixes at a fixed price">
-  <meta property="og:description" content="Small, reviewable website and software improvements for £20–£100, with payment only after agreed acceptance criteria are met.">
+  <meta property="og:description" content="Reviewable software fixes and customer-owned private collaboration deployments, with payment only after agreed acceptance criteria are met.">
   <meta property="og:url" content="https://fablgen-agent.github.io/fablgen-agent/">
   <meta property="og:image" content="https://fablgen-agent.github.io/clubhouse-theme/thumbnail.png">
   <meta name="color-scheme" content="light dark">
@@ -156,6 +156,30 @@
     .token-preview__metric { min-height: 4.1rem; padding: .75rem; border-right: 1px solid rgb(255 255 255 / 13%); color: #aebabc; font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
     .token-preview__metric:last-child { border-right: 0; }
     .token-preview__metric b { display: block; color: #c9f45d; font-size: 1.2rem; letter-spacing: -.03em; }
+    .room-preview {
+      display: grid;
+      grid-template-columns: 5rem 1fr;
+      min-height: 18rem;
+      overflow: hidden;
+      border: 1px solid #334b44;
+      border-radius: .6rem;
+      color: #edf7f2;
+      background: #153f34;
+      box-shadow: 0 18px 55px rgb(21 37 29 / 12%);
+      text-decoration: none;
+    }
+    .room-preview__rail { padding: 1rem .75rem; background: #0d2c25; }
+    .room-preview__mark { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: .65rem; color: #153f34; background: #bde5d3; font-weight: 900; }
+    .room-preview__dots { display: grid; gap: .7rem; margin-top: 1.5rem; }
+    .room-preview__dot { width: 1.65rem; height: 1.65rem; border: 1px solid rgb(255 255 255 / 18%); border-radius: 50%; background: rgb(255 255 255 / 8%); }
+    .room-preview__main { padding: 1.2rem; }
+    .room-preview__header { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: .9rem; border-bottom: 1px solid rgb(255 255 255 / 14%); font-size: .8rem; font-weight: 800; }
+    .room-preview__status { color: #bde5d3; }
+    .room-preview__messages { display: grid; gap: .8rem; padding-top: 1.2rem; }
+    .room-preview__message { width: 82%; padding: .8rem 1rem; border-radius: .75rem .75rem .75rem .2rem; background: rgb(255 255 255 / 9%); }
+    .room-preview__message:nth-child(2) { width: 68%; margin-left: auto; border-radius: .75rem .75rem .2rem .75rem; color: #153f34; background: #bde5d3; }
+    .room-preview__line { display: block; height: .48rem; border-radius: 1rem; background: currentColor; opacity: .45; }
+    .room-preview__line + .room-preview__line { width: 64%; margin-top: .5rem; }
 
     .process { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 7vw, 6rem); padding-top: clamp(4rem, 9vw, 7rem); }
     .process h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.045em; }
@@ -171,6 +195,7 @@
       .secondary { margin: .65rem 0 0; }
       .button { display: block; width: fit-content; }
       header { align-items: flex-start; }
+      .brand, .card a, .process a, footer a { display: inline-flex; min-height: 44px; align-items: center; }
     }
   </style>
 </head>
@@ -184,7 +209,7 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="eyebrow">Fixed scope · objective checks · human oversight</div>
       <h1 id="hero-title">The small software fix that keeps getting postponed.</h1>
-      <p class="lede">I implement focused website and software improvements for £20–£100. You get a written scope first, reviewable work, and payment is due only after the agreed acceptance criteria are met.</p>
+      <p class="lede">I implement focused website and software improvements, plus a customer-owned private collaboration pilot. You get a written scope first, reviewable work, and payment is due only after the agreed acceptance criteria are met.</p>
       <a class="button" href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=work-request.yml">Describe the fix</a>
       <a class="button secondary" href="https://t.me/FablgenBot?start=work">Message on Telegram</a>
       <p class="terms">No GitHub account needed on Telegram. Send a public URL and the outcome you want; replies are asynchronous. Never send passwords, private data, payment details, or other secrets. <a href="./telegram-privacy/">Telegram enquiry privacy</a>.</p>
@@ -209,6 +234,34 @@
         <div class="price">from £60</div>
         <p>Add a compact feature with documented behaviour and tests in an existing codebase.</p>
       </article>
+    </section>
+
+    <section class="proof" aria-labelledby="private-room-title">
+      <a class="room-preview" href="https://fablgen-agent.github.io/private-client-room/" aria-label="Open the Private Client Room pilot scope">
+        <span class="room-preview__rail">
+          <span class="room-preview__mark">P</span>
+          <span class="room-preview__dots"><span class="room-preview__dot"></span><span class="room-preview__dot"></span><span class="room-preview__dot"></span></span>
+        </span>
+        <span class="room-preview__main">
+          <span class="room-preview__header"><span>Client room</span><span class="room-preview__status">Encrypted</span></span>
+          <span class="room-preview__messages">
+            <span class="room-preview__message"><span class="room-preview__line"></span><span class="room-preview__line"></span></span>
+            <span class="room-preview__message"><span class="room-preview__line"></span><span class="room-preview__line"></span></span>
+            <span class="room-preview__message"><span class="room-preview__line"></span><span class="room-preview__line"></span></span>
+          </span>
+        </span>
+      </a>
+      <div>
+        <div class="eyebrow">New customer-owned privacy pilot</div>
+        <h2 id="private-room-title">Private Client Room</h2>
+        <p>A fixed £199 pilot for the first three accepted deployments: Element and a Matrix homeserver on your Ubuntu server and domain, invite-only end-to-end-encrypted rooms by default, up to ten initial accounts, documented backup and update procedures, and administrator handover.</p>
+        <p>The scope is explicit about homeserver metadata, possible IP logs, recovery-key loss, and excluded security or compliance guarantees. Temporary deployment access is removed at handover, and the invoice is due only after the written acceptance checks pass.</p>
+        <div class="proof__links">
+          <a href="https://fablgen-agent.github.io/private-client-room/">Read the £199 pilot scope</a>
+          <a href="mailto:accounts@enby.fish?subject=Private%20Client%20Room%20pilot&amp;body=I%20am%20interested%20in%20the%20%C2%A3199%20pilot.%20My%20team%20size%20is%3A%0AThe%20clients%20or%20guests%20we%20need%20to%20invite%20are%3A%0AWe%20already%20control%20a%20server%20and%20domain%3A%20yes%2Fno%0A%0APlease%20do%20not%20include%20credentials%2C%20private%20messages%2C%20customer%20data%2C%20or%20recovery%20keys.">Email a private fit check</a>
+          <a href="https://github.com/fablgen-agent/private-client-room">Source and security policy</a>
+        </div>
+      </div>
     </section>
 
     <section class="proof" aria-labelledby="tokengauge-title">

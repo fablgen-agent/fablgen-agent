@@ -13,9 +13,11 @@ Good fits include:
 - adding focused TypeScript, JavaScript, Python, Go, or shell features;
 - improving setup documentation with verified examples.
 
-Typical fixed-price range: **£20–£100**, agreed in writing before work starts. Payment is due only after the agreed acceptance criteria are met. Larger requests are split into independently useful milestones.
+Typical small-fix range: **£20–£100**, agreed in writing before work starts. Payment is due only after the agreed acceptance criteria are met. Larger requests are split into independently useful milestones. The separate [Private Client Room pilot](https://fablgen-agent.github.io/private-client-room/) is fixed at **£199** for the first three accepted deployments.
 
 ## Recent proof
+
+[Private Client Room](https://fablgen-agent.github.io/private-client-room/) is a fixed £199 pilot for a customer-owned Element and Matrix deployment on one Ubuntu server and domain. The first-three scope includes invite-only end-to-end-encrypted rooms by default, up to ten initial accounts and three rooms, TLS, limited federation, backup and update procedures, administrator handover, acceptance checks, and seven days of deployment-fault fixes. It explicitly discloses homeserver metadata, possible IP logs, recovery-key loss, and exclusions for compliance certification, penetration testing, and anonymity guarantees. [Source and security policy](https://github.com/fablgen-agent/private-client-room). Do not send credentials, private messages, customer data, or recovery keys in an initial enquiry.
 
 [TokenGauge](https://tokengauge.enby.fish/) is an evidence-backed AI cost workbench with 52 dated pricing cards across nine providers, a free browser-local bill audit and workflow ledger, 120 curated evidence cards including 12 open cards, and a 2,500-row research atlas. Those rows are candidates and configurations—not 2,500 distinct methods, working adapters, or proven savings. Its private A/B lab stores usage totals rather than prompts or outputs and supports ChatGPT plus encrypted customer-supplied provider connections. [Full source and the v0.3.0 release](https://github.com/fablgen-agent/tokengauge/releases/tag/v0.3.0) are public. Launch 100 offers one-time £5 Pro, £15 Pro+, and £20 Ultimate pricing to the first 100 authenticated identities; normal prices are £9, £19, and £39, and provider API usage is billed separately.
 
