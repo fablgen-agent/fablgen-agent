@@ -57,8 +57,8 @@ function render() {
 }
 
 inspectButton.addEventListener('click', render);
-brokenButton.addEventListener('click', () => { input.value = examples.broken; input.focus(); });
-goodButton.addEventListener('click', () => { input.value = examples.good; input.focus(); });
+brokenButton.addEventListener('click', () => { input.value = examples.broken; render(); });
+goodButton.addEventListener('click', () => { input.value = examples.good; render(); });
 downloadButton.addEventListener('click', () => {
   if (!lastReport) return;
   const url = URL.createObjectURL(new Blob([`${JSON.stringify(lastReport, null, 2)}\n`], { type: 'application/json' }));
