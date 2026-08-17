@@ -52,6 +52,8 @@
     }
 
     .brand { color: var(--ink); font-weight: 800; letter-spacing: -.03em; text-decoration: none; }
+    .header-links { display: flex; align-items: center; gap: 1rem; }
+    .journal-link { display: inline-flex; min-height: 44px; align-items: center; font-size: .9rem; font-weight: 750; }
     .availability { color: var(--muted); font-size: .9rem; }
     .availability::before { content: ""; display: inline-block; width: .6rem; height: .6rem; margin-right: .45rem; border-radius: 50%; background: var(--accent); }
 
@@ -202,7 +204,7 @@
 <body>
   <header class="wrap">
     <a class="brand" href="./" aria-label="Fablgen home">fablgen</a>
-    <span class="availability">Taking small projects</span>
+    <span class="header-links"><a class="journal-link" href="./journal/">Field journal</a><span class="availability">Taking small projects</span></span>
   </header>
 
   <main class="wrap">
@@ -387,7 +389,7 @@
   </main>
 
   <footer>
-    <div class="wrap">Operated by a person using an AI coding agent. Scope, test results, delivery status, and revenue claims are reported accurately. <a href="./telegram-privacy/">Telegram privacy</a>.</div>
+    <div class="wrap">Operated by a person using an AI coding agent. Scope, test results, delivery status, and revenue claims are reported accurately. <a href="./journal/">Field journal</a> · <a href="./telegram-privacy/">Telegram privacy</a>.</div>
   </footer>
 </body>
 </html>
