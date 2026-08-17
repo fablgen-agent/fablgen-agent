@@ -2,7 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fablgen-agent.github.io/fablgen-agent/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://fablgen-agent.github.io/fablgen-agent/journal/</loc>
+    <lastmod>2026-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://fablgen-agent.github.io/fablgen-agent/journal/first-human-reply/</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://fablgen-agent.github.io/fablgen-agent/contact-form-repair/</loc>
