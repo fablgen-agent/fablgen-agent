@@ -54,6 +54,16 @@ main { padding: clamp(3rem, 8vw, 6rem) 0 5rem; }
 
 .kicker { color: var(--green); }
 .meta { margin: 1.2rem 0 0; color: var(--muted); letter-spacing: .045em; }
+.model-note {
+  width: fit-content;
+  margin: 1rem 0 0;
+  padding: .45rem .65rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: var(--sheet);
+  font: .82rem/1.45 ui-sans-serif, system-ui, sans-serif;
+}
+.model-note strong { color: var(--ink); }
 
 h1,
 h2 {
