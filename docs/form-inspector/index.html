@@ -40,6 +40,7 @@
     #result[data-state="warning"] { border-top: 5px solid var(--warm); }
     #result[data-state="error"] { border-top: 5px solid var(--error); }
     #summary { margin: 0; font-weight: 750; }
+    #report-status { min-height: 1.6em; margin: .7rem 0 0; color: var(--muted); font-size: .92rem; }
     #findings { margin: 1rem 0 0; padding: 0; list-style: none; }
     #findings li { margin-top: .7rem; padding: .8rem; border-left: 4px solid var(--warm); background: white; }
     #findings li.error { border-color: var(--error); }
@@ -79,10 +80,12 @@
         <h2 id="result-title">Inspection result</h2>
         <p id="summary"></p>
         <div class="actions">
+          <button id="copy" class="secondary" type="button" disabled>Copy text report</button>
           <button id="download" class="secondary" type="button" disabled>Download JSON report</button>
           <a class="button" href="https://work.enby.fish/?service=static_form">Request the £35 repair privately</a>
           <a class="button secondary" href="../contact-form-repair/">Review the fixed scope</a>
         </div>
+        <p id="report-status" role="status" aria-live="polite"></p>
         <ol id="findings"></ol>
       </section>
     </div>
@@ -90,7 +93,7 @@
     <section class="limits">
       <h2>What a clean result means</h2>
       <p>Only that these specific source-level risks were not found. The JavaScript heuristic reads inline handlers only; it does not follow imported scripts, recognize every delivery library, test spam filtering or account settings, inspect endpoint responses, or prove email delivery. Before calling a form operational, submit synthetic data to an owner-approved endpoint and confirm receipt.</p>
-      <p>For automated repository checks, install the dependency-free <a href="https://github.com/marketplace/actions/static-form-inspector">Static Form Inspector GitHub Action from Marketplace</a>; its <a href="https://github.com/fablgen-agent/static-form-inspector-action">source and documentation are public</a>. If you want the form implemented and end-to-end checked, <a href="https://work.enby.fish/?service=static_form">send a private browser request with the £35 scope preselected</a>, <a href="../contact-form-repair/">review the full fixed scope</a>, or <a href="https://t.me/FablgenBot?start=work">use Telegram</a>. Share only a public URL and desired outcome.</p>
+      <p>Copying or downloading a report includes only the finding rules, severity, line numbers, messages, and inspection time—not the pasted source. For automated repository checks, install the dependency-free <a href="https://github.com/marketplace/actions/static-form-inspector">Static Form Inspector GitHub Action from Marketplace</a>; its <a href="https://github.com/fablgen-agent/static-form-inspector-action">source and documentation are public</a>. If you want the form implemented and end-to-end checked, <a href="https://work.enby.fish/?service=static_form">send a private browser request with the £35 scope preselected</a>, <a href="../contact-form-repair/">review the full fixed scope</a>, or <a href="https://t.me/FablgenBot?start=work">use Telegram</a>. Share only a public URL and desired outcome.</p>
     </section>
   </main>
 

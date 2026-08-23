@@ -3,7 +3,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const test = require('node:test');
-const { inspectHtml } = require('../docs/form-inspector/inspector.js');
+const { formatTextReport, inspectHtml } = require('../docs/form-inspector/inspector.js');
 
 test('accepts a named POST form with a delivery endpoint', () => {
   const report = inspectHtml('<form action="https://formspree.io/f/example" method="post"><input type="email" name="email"><textarea name="message"></textarea><button>Send</button></form>');
@@ -35,4 +35,16 @@ test('warns about inline false-success handling without overclaiming JavaScript 
   assert.match(page, /reads inline handlers only/i);
   assert.match(page, /does not follow imported scripts/i);
   assert.match(page, /prove email delivery/i);
+});
+
+test('formats a source-free handoff report with the diagnostic boundary', () => {
+  const source = '<form action="#"><input type="email" value="private@example.test"><textarea>private message</textarea></form>';
+  const inspected = inspectHtml(source);
+  const text = formatTextReport({ generated_at: '2026-08-23T09:45:00.000Z', forms_scanned: inspected.forms, findings: inspected.findings });
+
+  assert.match(text, /^Static Form Inspector report/m);
+  assert.match(text, /Forms scanned: 1/);
+  assert.match(text, /ERROR · line 1 · inert-action/);
+  assert.match(text, /does not prove endpoint acceptance or inbox receipt/i);
+  assert.doesNotMatch(text, /private@example\.test|private message|<form/i);
 });

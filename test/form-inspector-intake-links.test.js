@@ -14,3 +14,9 @@ test('routes high-intent inspector results to the private fixed repair', () => {
   assert.match(page, /href="\.\.\/contact-form-repair\/"/);
   assert.match(page, /Share only a public URL and desired outcome/);
 });
+
+test('offers a source-free copyable report before paid handoff', () => {
+  assert.match(page, /id="copy"[^>]*>Copy text report</);
+  assert.match(page, /includes only the finding rules, severity, line numbers, messages, and inspection time—not the pasted source/i);
+  assert.match(page, /id="report-status" role="status" aria-live="polite"/);
+});
