@@ -27,9 +27,10 @@ test('public intake excludes secrets, private data, and premature access', () =>
   assert.match(template, /authorized to request and pay/i);
 });
 
-test('both GitHub and account-free email paths carry the required public fields', () => {
+test('private browser, GitHub, and account-free email paths remain available', () => {
   const githubLinks = page.match(/https:\/\/github\.com\/fablgen-agent\/fablgen-agent\/issues\/new\?template=publii-theme-customization\.yml/g) || [];
-  assert.equal(githubLinks.length, 2);
+  assert.equal(githubLinks.length, 1);
+  assert.match(page, /href="https:\/\/work\.enby\.fish\/\?service=publii_theme"/);
 
   const emailLinks = [...page.matchAll(/href="(mailto:accounts@enby\.fish\?[^\"]+)"/g)];
   assert.equal(emailLinks.length, 2);

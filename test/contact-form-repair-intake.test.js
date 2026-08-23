@@ -22,8 +22,9 @@ test('dedicated intake rejects private and expanded-scope data', () => {
   assert.match(template, /uploads, payments, bookings, accounts, private systems, regulated data, or security testing/i);
 });
 
-test('both public repair CTAs use the dedicated issue form', () => {
+test('repair CTAs offer private browser intake and the dedicated public issue form', () => {
   const links = offer.match(/https:\/\/github\.com\/fablgen-agent\/fablgen-agent\/issues\/new\?template=contact-form-repair\.yml/g) || [];
-  assert.equal(links.length, 2);
+  assert.equal(links.length, 1);
+  assert.match(offer, /href="https:\/\/work\.enby\.fish\/\?service=static_form"/);
   assert.doesNotMatch(offer, /work-request\.yml[^"<]*contact-form/i);
 });
