@@ -24,7 +24,7 @@ The separate [Publii plugin service](https://fablgen-agent.github.io/fablgen-age
 
 ### LLM cost controls — free tools plus £75 implementation scopes
 
-[TokenGauge](https://tokengauge.enby.fish/) provides dated model pricing, a browser-local bill audit and workflow ledger, quality-gated comparisons, and a research catalogue. Catalogue rows are candidates and configurations—not guaranteed savings, working adapters, or distinct proven methods.
+[TokenGauge](https://tokengauge.enby.fish/) provides dated model pricing, a browser-local bill audit and workflow ledger, quality-gated comparisons, and a research catalogue. Catalogue rows are candidates and configurations—not guaranteed savings, working adapters, or distinct proven methods. Its [current source and v0.5.0 release](https://github.com/fablgen-agent/tokengauge/releases/tag/v0.5.0) are public, and [Launch 100 pricing is live](https://tokengauge.enby.fish/#pricing).
 
 - [£75 workflow-attribution setup](https://tokengauge.enby.fish/services/attribution): instrument one authorized Node.js/TypeScript or Python provider path and export the documented ledger schema.
 - [£75 autonomous budget guard](https://tokengauge.enby.fish/services/budget-guard): add one pre-dispatch budget control with focused refusal and reconciliation tests.
