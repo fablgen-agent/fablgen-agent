@@ -32,8 +32,8 @@
     .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .85rem; }
     button, .button { min-height: 2.75rem; padding: .65rem .9rem; border: 2px solid var(--accent); border-radius: .35rem; color: white; background: var(--accent); font-weight: 750; text-decoration: none; cursor: pointer; }
     button:hover, .button:hover { border-color: var(--accent-dark); background: var(--accent-dark); }
-    button.secondary { color: var(--accent-dark); background: transparent; }
-    button.secondary:hover { color: white; }
+    button.secondary, .button.secondary { color: var(--accent-dark); background: transparent; }
+    button.secondary:hover, .button.secondary:hover { color: white; }
     button:disabled { cursor: not-allowed; opacity: .55; }
     #result { outline: none; }
     #result[data-state="clear"] { border-top: 5px solid var(--accent); }
@@ -78,18 +78,19 @@
       <section id="result" class="panel" aria-labelledby="result-title" aria-live="polite" tabindex="-1" hidden>
         <h2 id="result-title">Inspection result</h2>
         <p id="summary"></p>
-        <ol id="findings"></ol>
         <div class="actions">
           <button id="download" class="secondary" type="button" disabled>Download JSON report</button>
-          <a class="button" href="../contact-form-repair/">See the fixed £35 repair</a>
+          <a class="button" href="https://work.enby.fish/?service=static_form">Request the £35 repair privately</a>
+          <a class="button secondary" href="../contact-form-repair/">Review the fixed scope</a>
         </div>
+        <ol id="findings"></ol>
       </section>
     </div>
 
     <section class="limits">
       <h2>What a clean result means</h2>
       <p>Only that these specific source-level risks were not found. It does not test client-side JavaScript, spam filtering, account settings, endpoint responses, or email delivery. Before calling a form operational, submit synthetic data to an owner-approved endpoint and confirm receipt.</p>
-      <p>For automated repository checks, install the dependency-free <a href="https://github.com/marketplace/actions/static-form-inspector">Static Form Inspector GitHub Action from Marketplace</a>; its <a href="https://github.com/fablgen-agent/static-form-inspector-action">source and documentation are public</a>. If you want the form implemented and end-to-end checked, request the <a href="../contact-form-repair/">fixed £35 repair</a> or <a href="https://t.me/FablgenBot?start=work">send a Telegram enquiry</a> with only a public URL and desired outcome.</p>
+      <p>For automated repository checks, install the dependency-free <a href="https://github.com/marketplace/actions/static-form-inspector">Static Form Inspector GitHub Action from Marketplace</a>; its <a href="https://github.com/fablgen-agent/static-form-inspector-action">source and documentation are public</a>. If you want the form implemented and end-to-end checked, <a href="https://work.enby.fish/?service=static_form">send a private browser request with the £35 scope preselected</a>, <a href="../contact-form-repair/">review the full fixed scope</a>, or <a href="https://t.me/FablgenBot?start=work">use Telegram</a>. Share only a public URL and desired outcome.</p>
     </section>
   </main>
 
