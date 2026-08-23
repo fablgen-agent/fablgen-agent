@@ -1,0 +1,93 @@
+name: Request the fixed £35 contact-form repair
+description: Scope one ordinary static-site enquiry form with public-safe evidence
+title: "Contact-form repair: "
+labels:
+  - work-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This intake is for the fixed £35 repair of one ordinary enquiry form on one public static website. A written scope comes first; payment is due only after the agreed acceptance checks pass.
+
+        Share public or synthetic evidence only. Do not include credentials, endpoint tokens, private source, customer messages, personal data, payment details, or security findings.
+
+  - type: input
+    id: public-url
+    attributes:
+      label: Public page or repository URL
+      description: Link the affected public page or a public repository you are authorized to change.
+      placeholder: https://example.com/contact or https://github.com/owner/repository
+    validations:
+      required: true
+
+  - type: dropdown
+    id: site-type
+    attributes:
+      label: Site type
+      options:
+        - GitHub Pages or another static host
+        - Static-site generator
+        - Exported landing page
+        - Hand-written HTML
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: What happens now?
+      description: Describe the visible behavior using no real customer submission or private data.
+      placeholder: The Send button opens a mail application, so visitors without a configured mail client cannot submit in the browser.
+    validations:
+      required: true
+
+  - type: textarea
+    id: public-findings
+    attributes:
+      label: Public Static Form Inspector findings
+      description: Optional. List rule names and public file locations only; do not paste endpoint tokens or private reports.
+      placeholder: "mailto-action at contact.html:42"
+
+  - type: textarea
+    id: expected-fields
+    attributes:
+      label: Ordinary fields the form should send
+      description: List field names, not real submitted values. Uploads, payments, bookings, account data, and sensitive or regulated information are outside this fixed scope.
+      placeholder: Name, reply email, optional phone, subject, message
+    validations:
+      required: true
+
+  - type: input
+    id: endpoint-owner
+    attributes:
+      label: Who controls the form endpoint and receipt inbox?
+      description: Name the organization or provider only. Do not include an address, token, password, or configuration value.
+      placeholder: Our company / Formspree / Web3Forms / not selected yet
+    validations:
+      required: true
+
+  - type: input
+    id: timing
+    attributes:
+      label: Preferred delivery timing
+      placeholder: No hard deadline, or 2026-09-01 UTC
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Fixed-scope confirmation
+      options:
+        - label: I am authorized to request and pay for changes to the linked site or repository.
+          required: true
+        - label: This is one ordinary public-site enquiry form and does not involve uploads, payments, bookings, accounts, private systems, regulated data, or security testing.
+          required: true
+        - label: I can provide or approve an owner-controlled endpoint and verify one clearly tagged synthetic staging receipt.
+          required: true
+        - label: I understand the fixed price is £35, due only after the written acceptance checks pass; any scope expansion must be agreed separately.
+          required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        The written scope normally checks agreed fields, honest success and failure states, owner-controlled spam friction, one tagged synthetic receipt, keyboard and mobile use, a focused patch, and rollback notes. Opening this issue is a request for scope—not a payment, contract acceptance, or authorization to access anything private.
