@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact form says sent but no email arrives? Five checks</title>
-  <meta name="description" content="A practical five-step check for static website contact forms that report success but do not deliver an enquiry, with a free private browser inspector.">
+  <title>Contact form says sent but no email arrives? Test the false success</title>
+  <meta name="description" content="Test whether a static contact form cancels submission and shows success without a visible delivery call. Free private browser and GitHub checks, plus five manual checks.">
   <link rel="canonical" href="https://fablgen-agent.github.io/fablgen-agent/guides/contact-form-says-sent-no-email/">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Contact form says sent but no email arrives? Five checks">
-  <meta property="og:description" content="Separate a reassuring success message from real form delivery with five reproducible checks.">
+  <meta property="og:title" content="Contact form says sent but no email arrives? Test the false success">
+  <meta property="og:description" content="Detect a cancelled submit that shows success without a visible delivery call, then verify the full path in five steps.">
   <meta property="og:url" content="https://fablgen-agent.github.io/fablgen-agent/guides/contact-form-says-sent-no-email/">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#15251d">
@@ -18,6 +18,14 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can a form say sent without making a network request?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. JavaScript can cancel the browser's native submit and display a success message without calling a delivery endpoint. Inspect the handler and confirm a real request in browser developer tools."
+        }
+      },
       {
         "@type": "Question",
         "name": "Can a source-code check prove that a contact-form email arrives?",
@@ -123,12 +131,12 @@
   <main class="wrap">
     <article>
       <header style="display:block; padding:0">
-        <div class="eyebrow">Practical guide · about eight minutes</div>
+        <div class="eyebrow">False-success test · five manual checks</div>
         <h1>Contact form says “sent” but no email arrives?</h1>
-        <p class="lede">A success message proves that the page changed. It does not prove that a request left the browser, that a form service accepted it, or that the intended inbox received it. These five checks separate those stages.</p>
-        <a class="button" href="../../form-inspector/">Run the free source check</a>
+        <p class="lede">A success message proves only that the page changed. Static Form Inspector now warns when inline JavaScript cancels native submission, shows success, and contains no visible delivery call. That is the fastest check; the five steps below verify the rest of the path.</p>
+        <a class="button" href="../../form-inspector/">Test the form source privately</a>
         <a class="button secondary" href="#five-checks">Read the five checks</a>
-        <p class="privacy">The browser inspector processes pasted HTML on your device and makes no inspector network request. Never paste secrets, private customer messages, or production submission data.</p>
+        <p class="privacy">The browser inspector processes pasted HTML on your device and makes no inspector network request. It does not follow external scripts or unfamiliar helper functions. Never paste secrets, private customer messages, or production submission data.</p>
       </header>
 
       <section class="summary" aria-label="Diagnostic layers">
@@ -146,10 +154,13 @@
         <section class="step" aria-labelledby="check-one">
           <span class="step-number">1</span>
           <h2 id="check-one">Check whether the form submits anywhere</h2>
-          <p>Inspect the opening <code>&lt;form&gt;</code> tag. An empty action, <code>action="#"</code>, or a JavaScript handler that only changes visible state can produce a convincing “sent” message without delivering anything.</p>
-          <pre><code>&lt;form action="#"&gt;
-  ...
-&lt;/form&gt;</code></pre>
+          <p>Inspect the opening <code>&lt;form&gt;</code> tag and its submit handler. An empty action, <code>action="#"</code>, or JavaScript that cancels submission and only changes visible state can produce a convincing “sent” message without delivering anything.</p>
+          <pre><code>form.addEventListener('submit', (event) =&gt; {
+  event.preventDefault();
+  status.textContent = 'Message sent!';
+  form.reset();
+});</code></pre>
+          <p>The free inspector reports this conservative pattern as <code>cancelled-submit-without-delivery</code>. It suppresses the warning when the same inline source contains a visible Fetch, Axios, XMLHttpRequest, Beacon, jQuery Ajax, EmailJS, <code>submit()</code>, or <code>requestSubmit()</code> delivery path. It does not claim to analyse code in external script files.</p>
           <p>A <code>mailto:</code> action is different but still fragile: it asks the visitor’s device to open an email application. It is not an in-browser delivery endpoint.</p>
           <div class="result"><strong>Pass condition</strong>The form points to an owner-approved HTTPS endpoint or application route, and the submit handler sends a real request before showing success.</div>
         </section>
@@ -192,6 +203,10 @@
         <div class="eyebrow">Short answers</div>
         <h2 id="faq-title">Contact-form delivery FAQ</h2>
         <details>
+          <summary>Can a form say “sent” without making a request?</summary>
+          <p>Yes. A handler can call <code>preventDefault()</code>, change the message on the page, and reset the form without sending anything. Confirm the handler contains a real delivery path and use the browser Network panel during a synthetic submission.</p>
+        </details>
+        <details>
           <summary>Can a source-code check prove that email arrives?</summary>
           <p>No. It can find suspicious or missing configuration. Only a synthetic end-to-end test plus owner-confirmed receipt proves the full path.</p>
         </details>
@@ -207,8 +222,9 @@
 
       <section class="cta" aria-labelledby="cta-title">
         <h2 id="cta-title">Want the source checked first?</h2>
-        <p>Static Form Inspector can identify inert actions, placeholder endpoint tokens, contact-like GET forms, unnamed controls, and unclosed forms without submitting data. If implementation is needed, the fixed £35 repair covers one public form with written acceptance checks and payment after review.</p>
+        <p>Static Form Inspector can identify false-success handlers, inert actions, placeholder endpoint tokens, contact-like GET forms, unnamed controls, and unclosed forms without submitting data. The same rules can run in CI with the dependency-free GitHub Action. If implementation is needed, the fixed £35 repair covers one public form with written acceptance checks and payment after review.</p>
         <a class="button" href="../../form-inspector/">Inspect HTML in the browser</a>
+        <a class="button secondary" href="https://github.com/fablgen-agent/static-form-inspector-action">Add the GitHub Action</a>
         <a class="button secondary" href="../../contact-form-repair/">See the £35 repair scope</a>
       </section>
     </article>
