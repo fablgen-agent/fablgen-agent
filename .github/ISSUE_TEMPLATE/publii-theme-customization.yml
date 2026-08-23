@@ -1,0 +1,58 @@
+name: Request a Publii theme customization
+description: Propose a small, paid change to an existing Publii theme
+title: "Publii customization request: "
+labels:
+  - work-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share only a public site or example and the result you want. The prices below are starting scopes, not automatic quotes. A written scope, fixed price, delivery target, and acceptance checks will be agreed before work starts. Do not include credentials, private source code, personal data, unpublished content, or payment details.
+  - type: input
+    id: website
+    attributes:
+      label: Public Publii website or example
+      description: Optional. Link a public site, repository, screenshot, or example showing the desired direction.
+      placeholder: https://example.com
+  - type: dropdown
+    id: starting_scope
+    attributes:
+      label: Closest starting scope
+      description: This bounds the first reply; it is not an automatic quote or commitment.
+      options:
+        - £25 brand pass — colours, badge, and existing theme tokens
+        - £45 homepage section — one focused responsive section using existing content fields
+        - £75 theme variant — up to two focused template changes and a tested installable ZIP
+        - Another small Publii theme change
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What would you like changed?
+      description: Explain the current limitation and the result you want.
+      placeholder: Add a compact upcoming-events section below the homepage hero, with a usable mobile layout.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: How will we know it is complete?
+      description: Optional. List the pages, screen widths, content examples, or other objective checks that matter.
+  - type: input
+    id: deadline
+    attributes:
+      label: Timing
+      description: Optional. Include the timezone if a date is strict.
+      placeholder: No hard deadline, or 2026-09-04 UTC
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I am authorized to request and pay for this work.
+          required: true
+        - label: I understand payment is due only after the written acceptance checks pass.
+          required: true
+        - label: This request does not include credentials, private source, personal data, unpublished content, payment details, security testing, or deceptive content.
+          required: true
