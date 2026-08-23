@@ -1,0 +1,75 @@
+name: Request the fixed £75 booking-selection repair
+description: Scope one public availability or booking-selection defect before checkout
+title: "Booking-selection repair: "
+labels:
+  - work-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This intake is for a fixed £75 repair of one reproducible public availability or booking-selection defect in one existing licensed integration. The work stops at the existing checkout handoff: it does not place an order, take payment, or access guest or customer records. A written fit check comes first, and payment is due only after the agreed acceptance checks pass.
+
+        Share public or synthetic evidence only. Do not include credentials, private source, booking or customer records, personal or health data, payment details, licence keys, or security findings.
+  - type: input
+    id: public_url
+    attributes:
+      label: Public booking page or repository URL
+      description: Link one public page or public repository you are authorized to change.
+      placeholder: https://example.com/book
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform and booking integration
+      description: Name the platform, integration, and versions if known. Do not include licence keys.
+      placeholder: WordPress 6.x with an existing licensed booking plugin
+    validations:
+      required: true
+  - type: textarea
+    id: current_behaviour
+    attributes:
+      label: What happens now?
+      description: Give the shortest public or synthetic reproduction without creating a real booking.
+      placeholder: The page says online booking is unavailable, but date and guest controls plus the booking button remain active.
+    validations:
+      required: true
+  - type: textarea
+    id: expected_selection
+    attributes:
+      label: What should one valid and one invalid selection do?
+      description: Describe the expected availability, total, useful error, and checkout-handoff behaviour. Do not include customer data.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance checks
+      description: List observable staging checks. The final step must stop before an order or payment.
+      placeholder: A valid date and guest count show the owner-confirmed option and total; a sold-out date stops honestly; the valid selection reaches the existing checkout handoff without placing an order.
+    validations:
+      required: true
+  - type: input
+    id: timing
+    attributes:
+      label: Preferred delivery timing
+      placeholder: No hard deadline, or 2026-09-04 UTC
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Fixed-scope confirmation
+      options:
+        - label: I am authorized to request and pay for changes to the linked site or repository.
+          required: true
+        - label: This is one public availability or booking-selection defect in one existing licensed integration and one product, service, or location.
+          required: true
+        - label: I can provide owner-approved staging inventory and verify the selection result without a real order, payment, or customer record.
+          required: true
+        - label: I understand the fixed price is £75, due only after the written acceptance checks pass; unsupported paid licences, third-party platform changes, and scope expansion are excluded unless separately agreed.
+          required: true
+        - label: This request contains no credentials, private source, licence keys, booking/customer records, personal or health data, payment details, or security findings.
+          required: true
+  - type: markdown
+    attributes:
+      value: |
+        The usual written checks cover one valid selection, one unavailable or invalid selection, disabled-until-valid action state, owner-confirmed price/availability output, one tagged staging handoff that stops before checkout completion, keyboard/mobile use, a focused patch, and rollback notes. Opening this issue is a request for scope—not a booking, payment, contract acceptance, or authorization to access anything private.
