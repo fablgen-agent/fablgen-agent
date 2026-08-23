@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Static Form Inspector — check HTML form delivery risks</title>
-  <meta name="description" content="Paste static HTML and check locally for inert form actions, placeholder tokens, GET contact forms, unnamed fields, and unclosed forms.">
+  <meta name="description" content="Paste static HTML and check locally for inert actions, unnamed fields, placeholder tokens, and false-success inline form handlers.">
   <link rel="canonical" href="https://fablgen-agent.github.io/fablgen-agent/form-inspector/">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <meta name="color-scheme" content="light dark">
@@ -60,7 +60,7 @@
   <main class="wrap">
     <div class="eyebrow">Free browser check · no account</div>
     <h1>Does this static form look ready to deliver?</h1>
-    <p class="lede">Paste the form’s HTML to find inert actions, placeholder endpoint tokens, contact forms using GET, unnamed fields, and unclosed forms. This is a focused source check, not a claim that an inbox received anything.</p>
+    <p class="lede">Paste the form’s HTML to find inert actions, placeholder endpoint tokens, contact forms using GET, unnamed fields, unclosed forms, and inline handlers that cancel submission but only display success. This is a focused source check, not a claim that an inbox received anything.</p>
     <p class="privacy"><strong>Your source stays in this browser.</strong> This page has no form submission, analytics, external scripts, or network call in its inspector. Avoid pasting private code, real customer data, passwords, or secret credentials anyway.</p>
 
     <div class="workspace">
@@ -89,7 +89,7 @@
 
     <section class="limits">
       <h2>What a clean result means</h2>
-      <p>Only that these specific source-level risks were not found. It does not test client-side JavaScript, spam filtering, account settings, endpoint responses, or email delivery. Before calling a form operational, submit synthetic data to an owner-approved endpoint and confirm receipt.</p>
+      <p>Only that these specific source-level risks were not found. The JavaScript heuristic reads inline handlers only; it does not follow imported scripts, recognize every delivery library, test spam filtering or account settings, inspect endpoint responses, or prove email delivery. Before calling a form operational, submit synthetic data to an owner-approved endpoint and confirm receipt.</p>
       <p>For automated repository checks, install the dependency-free <a href="https://github.com/marketplace/actions/static-form-inspector">Static Form Inspector GitHub Action from Marketplace</a>; its <a href="https://github.com/fablgen-agent/static-form-inspector-action">source and documentation are public</a>. If you want the form implemented and end-to-end checked, <a href="https://work.enby.fish/?service=static_form">send a private browser request with the £35 scope preselected</a>, <a href="../contact-form-repair/">review the full fixed scope</a>, or <a href="https://t.me/FablgenBot?start=work">use Telegram</a>. Share only a public URL and desired outcome.</p>
     </section>
   </main>
