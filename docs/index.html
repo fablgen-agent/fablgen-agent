@@ -183,6 +183,29 @@
     .room-preview__line { display: block; height: .48rem; border-radius: 1rem; background: currentColor; opacity: .45; }
     .room-preview__line + .room-preview__line { width: 64%; margin-top: .5rem; }
 
+    .threads-preview {
+      min-height: 18rem;
+      overflow: hidden;
+      border: 1px solid #3b4147;
+      border-radius: .6rem;
+      color: #182028;
+      background: #f5f1e8;
+      box-shadow: 0 18px 55px rgb(21 37 29 / 12%);
+      text-decoration: none;
+    }
+    .threads-preview__bar { display: flex; align-items: center; gap: .65rem; padding: .75rem 1rem; color: white; background: #2a3340; font-size: .78rem; font-weight: 800; }
+    .threads-preview__mark { display: grid; place-items: center; width: 1.6rem; height: 1.6rem; border-radius: .4rem; color: #2a3340; background: #ffcc71; }
+    .threads-preview__status { margin-left: auto; color: #cfe8dc; }
+    .threads-preview__body { display: grid; grid-template-columns: 7rem 1fr; min-height: 15rem; }
+    .threads-preview__rail { display: grid; align-content: start; gap: .65rem; padding: 1rem .8rem; color: #dfe6eb; background: #384451; font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+    .threads-preview__rail b { padding: .45rem .5rem; border-radius: .3rem; color: #26313a; background: #ffcc71; text-transform: none; letter-spacing: 0; }
+    .threads-preview__feed { display: grid; align-content: start; gap: .65rem; padding: 1rem; }
+    .threads-preview__topic { padding: .75rem; border: 1px solid #d4cec0; border-radius: .45rem; background: #fffdf7; }
+    .threads-preview__topic small { display: block; margin-bottom: .35rem; color: #08775b; font-size: .6rem; font-weight: 900; text-transform: uppercase; letter-spacing: .07em; }
+    .threads-preview__topic strong { display: block; font-size: .85rem; }
+    .threads-preview__topic span { color: #667069; font-size: .68rem; }
+    .threads-preview__topic--done { opacity: .72; }
+
     .process { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 7vw, 6rem); padding-top: clamp(4rem, 9vw, 7rem); }
     .process h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.045em; }
     ol { margin: 0; padding-left: 1.4rem; }
@@ -270,6 +293,32 @@
           <a href="https://work.enby.fish/?service=private_room">Send a private browser fit check</a>
           <a href="mailto:accounts@enby.fish?subject=Private%20Client%20Room%20pilot&amp;body=I%20am%20interested%20in%20the%20%C2%A3199%20pilot.%20My%20team%20size%20is%3A%0AThe%20clients%20or%20guests%20we%20need%20to%20invite%20are%3A%0AWe%20already%20control%20a%20server%20and%20domain%3A%20yes%2Fno%0A%0APlease%20do%20not%20include%20credentials%2C%20private%20messages%2C%20customer%20data%2C%20or%20recovery%20keys.">Email a private fit check</a>
           <a href="https://github.com/fablgen-agent/private-client-room">Source and security policy</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof" aria-labelledby="team-threads-title">
+      <a class="threads-preview" href="https://threads.enby.fish/" aria-label="Open the Private Team Threads pilot scope">
+        <span class="threads-preview__bar"><span class="threads-preview__mark">↳</span> Team threads <span class="threads-preview__status">customer-owned</span></span>
+        <span class="threads-preview__body">
+          <span class="threads-preview__rail"><span>Private channels</span><b>team desk</b><span>client room</span><span>launch notes</span></span>
+          <span class="threads-preview__feed">
+            <span class="threads-preview__topic"><small>Open topic</small><strong>Friday handover</strong><span>3 replies · guest restricted</span></span>
+            <span class="threads-preview__topic threads-preview__topic--done"><small>✓ Resolved</small><strong>Backup rehearsal</strong><span>7 replies · is:resolved</span></span>
+          </span>
+        </span>
+      </a>
+      <div>
+        <div class="eyebrow">Customer-owned threaded collaboration</div>
+        <h2 id="team-threads-title">Private Team Threads</h2>
+        <p>A separate fixed £199 pilot for the first three accepted deployments: Zulip Server 12.2 on one fresh customer-owned Ubuntu 24.04 x86_64 VM and one customer-owned hostname with a Certbot TLS route, up to fifteen initial active accounts and five private channels, constrained guest roles, and native threaded topics with resolve, unresolve, and filtering.</p>
+        <p>This is not the Matrix offer. It is an independent service, not affiliated with Zulip, and it is not end-to-end encrypted: trusted server administrators, root access, and readable backups can access message content, while infrastructure logs may include IP addresses and other metadata. SMTP is configured with customer-provided credentials and, like optional mobile push, is an external processor. Mobile push is excluded by default and is optional only when the customer personally registers it and accepts Zulip's terms and any fees. Zulip's official free limit is up to ten active users. The invoice is due only after the written acceptance checks pass.</p>
+        <p>Migrations, SSO/LDAP/SAML, calls or conferencing, compliance or security audits, high availability, custom integrations, experimental PWA forks, and hosting, domain, or licence fees are outside the pilot.</p>
+        <div class="proof__links">
+          <a href="https://threads.enby.fish/">Read the £199 threaded-team scope</a>
+          <a href="https://work.enby.fish/?service=private_team_threads">Send a private browser fit check</a>
+          <a href="mailto:accounts@enby.fish?subject=Private%20Team%20Threads%20pilot&amp;body=Initial%20active%20accounts%3A%0APrivate%20channels%3A%0AGuest%20pattern%3A%0ATopic-resolution%20workflow%3A%0AFresh%20Ubuntu%2024.04%20VM%20and%20hostname%3A%0A%0APlease%20do%20not%20include%20credentials%2C%20messages%2C%20or%20customer%20data.">Email a private fit check</a>
+          <a href="https://github.com/fablgen-agent/private-team-threads">Source and delivery boundary</a>
         </div>
       </div>
     </section>

@@ -11,6 +11,7 @@ const readme = fs.readFileSync('README.md', 'utf8');
 test('private browser intake is visible without removing alternative channels', () => {
   assert.match(home, /href="https:\/\/work\.enby\.fish\/">Describe the fix privately<\/a>/);
   assert.match(home, /href="https:\/\/work\.enby\.fish\/\?service=private_room"/);
+  assert.match(home, /href="https:\/\/work\.enby\.fish\/\?service=private_team_threads"/);
   assert.match(home, /href="https:\/\/work\.enby\.fish\/\?service=alert_feed"/);
   assert.match(home, /public GitHub request/i);
   assert.match(home, /https:\/\/t\.me\/FablgenBot\?start=work/);

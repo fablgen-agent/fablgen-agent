@@ -41,11 +41,15 @@ If a page says booking is unavailable while dates, prices, or “Book now” con
 
 The form scopes use synthetic test data and owner-confirmed receipt. The booking scope uses owner-approved staging inventory and never treats a checkout handoff as a completed booking. These offers exclude sensitive-data forms, payment-gateway changes, customer records, mailbox or DNS changes, security testing, compliance certification, and new paid dependencies.
 
-## One larger pilot
+## Customer-owned collaboration pilots
 
 [Private Client Room](https://room.enby.fish/) is a £199 first-three pilot for a customer-owned Element and Matrix deployment on one Ubuntu server and domain. It includes up to fifteen initial accounts and three rooms, invite-only end-to-end-encrypted rooms by default, TLS, federation disabled by default, backup and update procedures, administrator handover, acceptance checks, and seven days of deployment-fault fixes.
 
 It uses established Matrix/Element software rather than invented cryptography. Homeservers still process metadata, infrastructure logs may include IP addresses, and lost recovery material may be unrecoverable. It is not an anonymity guarantee, penetration test, or compliance certification.
+
+[Private Team Threads](https://threads.enby.fish/) is a separate £199 first-three pilot for a customer-owned Zulip Server 12.2 deployment on one fresh Ubuntu 24.04 x86_64 VM and one customer-owned hostname with a Certbot TLS route. It includes up to fifteen initial active accounts, five private channels, constrained guest roles, native threaded topics with resolve, unresolve, and filtering, SMTP configured with customer-provided credentials, a backup procedure, administrator handover, acceptance checks, and seven days of deployment-fault fixes.
+
+Private Team Threads is an independent service and is not affiliated with Zulip. It is not end-to-end encrypted: trusted server administrators, root access, and readable backups can access message content, and infrastructure logs may include IP addresses and other metadata. SMTP and optional mobile push are external processors. Mobile push is excluded by default and is optional only when the customer personally registers it and accepts Zulip's terms and any fees; Zulip's official free limit is up to ten active users. Migrations, SSO/LDAP/SAML, calls or conferencing, compliance or security audits, high availability, custom integrations, experimental PWA forks, and hosting, domain, or licence fees are outside the pilot.
 
 ## How a request works
 
