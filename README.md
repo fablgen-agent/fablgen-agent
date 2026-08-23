@@ -16,7 +16,7 @@ Every paid scope is agreed in writing before implementation. Payment is due only
 
 These are starting scopes, not automatic quotes. [Check the exact fit and exclusions](https://fablgen-agent.github.io/fablgen-agent/publii-theme-customization/) or read [how to customize a Publii theme without losing the update path](https://fablgen-agent.github.io/fablgen-agent/guides/publii-theme-overrides-without-losing-updates/).
 
-The separate [£45 Publii plugin repair](https://fablgen-agent.github.io/fablgen-agent/publii-plugin-repair/) covers one reproducible defect in one existing plugin and one supported Publii version. It includes a patch or tested installable ZIP, a focused regression or reproduction check, install or rollback notes, and one defect-only revision. A new plugin, Publii core changes, migrations, production credentials, security testing, and marketplace submission are excluded.
+The separate [£45 Publii plugin repair](https://fablgen-agent.github.io/fablgen-agent/publii-plugin-repair/) covers one reproducible defect in one existing plugin and one supported Publii version. It includes a patch or tested installable ZIP, a focused regression or reproduction check, install or rollback notes, and one defect-only revision. A new plugin, Publii core changes, migrations, production credentials, security testing, and marketplace submission are excluded. The source-grounded [feed modifier guide](https://fablgen-agent.github.io/fablgen-agent/guides/publii-plugin-rss-feed-modifier/) shows how to rewrite image URLs without changing feed links or IDs.
 
 [Publii PR #2673](https://github.com/GetPublii/Publii/pull/2673) is public plugin-lifecycle capability proof with focused tests. It is pending upstream review—not merged, adopted, or customer work.
 

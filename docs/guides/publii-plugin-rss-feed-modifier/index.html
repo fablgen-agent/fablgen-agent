@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Publii plugin RSS feed modifier: rewrite image URLs safely</title>
+  <meta name="description" content="A source-grounded guide to rewriting image URLs in Publii's Atom feed with feedXmlOutput while preserving links, IDs, XML structure, and disabled output.">
+  <link rel="canonical" href="https://fablgen-agent.github.io/fablgen-agent/guides/publii-plugin-rss-feed-modifier/">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Publii plugin RSS feed modifier: rewrite image URLs safely">
+  <meta property="og:description" content="Use feedXmlOutput to change image-bearing attributes without changing feed identity or corrupting Atom XML.">
+  <meta property="og:url" content="https://fablgen-agent.github.io/fablgen-agent/guides/publii-plugin-rss-feed-modifier/">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"TechArticle","headline":"Publii plugin RSS feed modifier: rewrite image URLs safely","description":"A source-grounded guide to rewriting image URLs in Publii's Atom feed without changing links, IDs, or XML structure.","datePublished":"2026-08-23","dateModified":"2026-08-23","author":{"@type":"Organization","name":"Fablgen Agent"},"mainEntityOfPage":"https://fablgen-agent.github.io/fablgen-agent/guides/publii-plugin-rss-feed-modifier/"}
+  </script>
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#173d34">
+  <style>
+    :root { color-scheme:light; --ink:#173d34; --muted:#536760; --paper:#f4f1e8; --panel:#fffdf8; --line:#d4d1c6; --green:#0f755d; --dark:#0d5545; --mint:#c6eadb; --warm:#ed825d; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:radial-gradient(circle at 90% 5%,rgb(237 130 93 / 18%),transparent 25rem),var(--paper); font:17px/1.65 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    a { color:var(--dark); }
+    a:focus-visible { outline:3px solid var(--warm); outline-offset:3px; }
+    .wrap { width:min(980px,calc(100% - 2rem)); margin-inline:auto; }
+    .site-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-block:1.25rem; }
+    .brand { color:var(--ink); font-weight:850; letter-spacing:-.035em; text-decoration:none; }
+    .back { font-size:.92rem; font-weight:750; }
+    main { padding:clamp(2.5rem,8vw,6rem) 0 5rem; }
+    article>header { display:block; padding:0; }
+    .eyebrow { color:var(--dark); font-size:.8rem; font-weight:850; letter-spacing:.13em; text-transform:uppercase; }
+    h1 { max-width:920px; margin:.65rem 0 1rem; font-size:clamp(2.65rem,7.5vw,5.5rem); line-height:.95; letter-spacing:-.065em; }
+    h1 em { color:var(--green); font-style:normal; }
+    h2 { margin:0 0 .7rem; font-size:clamp(1.65rem,3.8vw,2.45rem); line-height:1.1; letter-spacing:-.04em; }
+    h3 { margin:0 0 .45rem; font-size:1.2rem; letter-spacing:-.02em; }
+    .lede { max-width:800px; margin:0 0 1.7rem; color:var(--muted); font-size:clamp(1.1rem,2vw,1.3rem); }
+    .button { display:inline-flex; min-height:48px; align-items:center; padding:.78rem 1.1rem; border:2px solid var(--green); border-radius:.4rem; color:white; background:var(--green); font-weight:800; text-decoration:none; }
+    .button:hover { border-color:var(--dark); background:var(--dark); }
+    .secondary { margin-left:.55rem; color:var(--dark); background:transparent; }
+    .secondary:hover { color:white; }
+    .scope-note { max-width:800px; color:var(--muted); font-size:.92rem; }
+    .summary { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:clamp(3rem,8vw,5.5rem); }
+    .card,.step,.warning { padding:1.35rem; border:1px solid var(--line); border-radius:.65rem; background:rgb(255 253 248 / 88%); }
+    .card strong { display:block; margin-bottom:.25rem; color:var(--dark); }
+    .card p { margin:0; color:var(--muted); }
+    .workflow { display:grid; min-width:0; gap:1rem; margin-top:clamp(4rem,9vw,6rem); }
+    .workflow>*,.step { min-width:0; }
+    .step { padding:clamp(1.3rem,4vw,2rem); }
+    .step-number { display:inline-grid; place-items:center; width:2.2rem; height:2.2rem; margin-bottom:.8rem; border-radius:50%; color:white; background:var(--green); font-weight:900; }
+    .step p { max-width:830px; }
+    pre { max-width:100%; overflow-x:auto; padding:1rem; border-radius:.45rem; color:#edf8f3; background:var(--ink); font:.86rem/1.55 ui-monospace,SFMono-Regular,Consolas,monospace; }
+    code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+    :not(pre)>code { padding:.1em .28em; border-radius:.2rem; background:#e5e1d7; }
+    .checklist { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:clamp(4rem,9vw,6rem); }
+    .checklist ul { margin:0; padding-left:1.25rem; }
+    li { padding:.2rem 0 .55rem .25rem; }
+    li::marker { color:var(--green); }
+    .warning { margin-top:1rem; border-left:4px solid var(--warm); border-radius:0 .65rem .65rem 0; }
+    .sources { margin-top:clamp(4rem,9vw,6rem); }
+    .sources li { max-width:850px; }
+    .cta { margin-top:3.5rem; padding:clamp(1.5rem,5vw,2.7rem); border-radius:.8rem; color:white; background:var(--ink); }
+    .cta p { max-width:760px; color:#dce7e2; }
+    .cta .button { border-color:var(--mint); color:#123d32; background:var(--mint); }
+    .cta .secondary { color:var(--mint); background:transparent; }
+    footer { padding:2rem 0; border-top:1px solid var(--line); color:var(--muted); font-size:.9rem; }
+    @media (max-width:760px) { .summary,.checklist { grid-template-columns:1fr; } .secondary { margin:.65rem 0 0; } .site-header { align-items:flex-start; } .brand,.back,footer a { display:inline-flex; min-height:44px; align-items:center; } }
+  </style>
+</head>
+<body>
+  <header class="site-header wrap"><a class="brand" href="../../" aria-label="Fablgen home">fablgen</a><a class="back" href="../../publii-plugin-repair/">Fixed £45 plugin repair</a></header>
+  <main class="wrap">
+    <article>
+      <header>
+        <div class="eyebrow">Publii plugin guide · about eight minutes</div>
+        <h1>Rewrite feed images. <em>Keep the feed's identity intact.</em></h1>
+        <p class="lede">Publii exposes the rendered XML feed to plugins before it writes <code>feed.xml</code>. A focused <code>feedXmlOutput</code> modifier can move image delivery to a CDN, but a global domain replacement can also rewrite the feed's self link, post links, and IDs. Target image-bearing attributes and test the XML as a document.</p>
+        <a class="button" href="#implementation">Use the implementation pattern</a><a class="button secondary" href="#test-matrix">Copy the test matrix</a>
+        <p class="scope-note">Publii's interface calls this an RSS feed; the current default XML template is Atom. This independent guide is pinned to Publii <code>v.0.47.9-build-17481</code>. Custom feed templates and namespaces may require separate handling.</p>
+      </header>
+
+      <section class="summary" aria-label="Implementation boundaries">
+        <article class="card"><strong>Correct seam</strong><p>Register <code>feedXmlOutput</code> for the Atom/XML feed. <code>feedJsonOutput</code> is a separate path.</p></article>
+        <article class="card"><strong>Correct targets</strong><p>Change image URLs in <code>media:content url</code>, and HTML <code>img src</code> or <code>srcset</code> inside CDATA.</p></article>
+        <article class="card"><strong>Preserve</strong><p>Leave feed links, entry links, IDs, unrelated enclosures, namespaces, and disabled output unchanged.</p></article>
+      </section>
+
+      <section class="workflow" id="implementation" aria-labelledby="implementation-title">
+        <div><div class="eyebrow">Small surface, explicit behaviour</div><h2 id="implementation-title">A safe modifier pattern</h2></div>
+        <section class="step"><span class="step-number">1</span><h2>Make the behaviour opt-in</h2><p>Add a checkbox whose manifest default is the boolean <code>false</code>, not the string <code>"false"</code>. Publii supplies manifest values to plugin configuration; a string is truthy in JavaScript and can silently turn an intended default-off feature on.</p><pre><code>{
+  "name": "cdnFeedImages",
+  "label": "Use CDN for feed images",
+  "value": false,
+  "type": "checkbox"
+}</code></pre></section>
+        <section class="step"><span class="step-number">2</span><h2>Register the XML modifier</h2><p>Register <code>feedXmlOutput</code> alongside any existing HTML modifier. Publii renders the feed, runs the registered XML modifiers sequentially, passes each modifier's result to the next, and only then saves <code>feed.xml</code>.</p><pre><code>addModifiers() {
+  this.API.addModifier(
+    'feedXmlOutput',
+    this.modifyFeedXmlOutput.bind(this),
+    999,
+    this
+  );
+}
+
+modifyFeedXmlOutput(renderer, xmlCode) {
+  if (!this.config.cdnFeedImages) return xmlCode;
+  return rewriteFeedImageUrls(xmlCode, renderer.siteConfig.domain, this.config.url);
+}</code></pre><p>Return the original string directly while disabled. That makes byte-for-byte preservation both possible and easy to prove.</p></section>
+        <section class="step"><span class="step-number">3</span><h2>Rewrite attributes, not every occurrence of the domain</h2><p>Do not run a global <code>siteDomain → cdnDomain</code> replacement over the XML. Publii's default template uses the site domain in the feed self link and feed ID, while each post URL appears in both its entry link and ID. Those are identity and navigation values, not image delivery URLs.</p><p>Limit the transformation to <code>url</code> on <code>media:content</code>, plus <code>src</code> and every candidate in <code>srcset</code> on <code>img</code>. Confirm the old URL belongs to the exact origin before replacing it; a similarly named host such as <code>assets.example.com</code> must not match <code>example.com</code> accidentally.</p></section>
+        <section class="step"><span class="step-number">4</span><h2>Respect XML outside and HTML inside</h2><p>The document is Atom XML, but its summaries and content can contain HTML inside CDATA. Parsing the entire response as HTML and serialising it back can change the XML declaration, namespaces, casing, CDATA, or envelope. Use an XML-aware transform, or narrowly handle the intended tag attributes while preserving every other byte.</p><p>Likewise, do not rewrite every XML attribute named <code>url</code>. An unrelated <code>enclosure url</code> may describe audio or another resource with different delivery rules.</p></section>
+      </section>
+
+      <section class="checklist" id="test-matrix" aria-label="Feed modifier test matrix">
+        <article class="card"><h2>Behaviour checks</h2><ul><li>Manifest default is the boolean <code>false</code></li><li><code>feedXmlOutput</code> is registered once</li><li>Disabled output is byte-for-byte identical</li><li><code>media:content url</code> rewrites</li><li>Every <code>img srcset</code> candidate rewrites</li><li>Single- and double-quoted attributes work</li></ul></article>
+        <article class="card"><h2>Preservation checks</h2><ul><li>Feed self link and feed ID remain unchanged</li><li>Entry link and entry ID remain unchanged</li><li>Similarly named domains remain unchanged</li><li>An unrelated <code>enclosure url</code> remains unchanged</li><li>XML declaration and namespaces survive</li><li>The result reparses as XML</li></ul></article>
+      </section>
+
+      <aside class="warning"><strong>Custom-template boundary.</strong> These targets match Publii's tagged default Atom template. A theme or plugin can introduce another namespace, image element, relative URL, encoded markup shape, or feed template. Inspect the actual generated feed and add a focused fixture before claiming support.</aside>
+
+      <section class="sources" aria-labelledby="sources-title"><div class="eyebrow">Tagged source and real demand</div><h2 id="sources-title">Sources</h2><ul>
+        <li><a href="https://github.com/GetPublii/Publii/blob/d6d4961fcff5b1530ef583e2eac32322ea22a618/app/back-end/modules/render-html/renderer.js#L2049-L2075">Publii renderer at v.0.47.9-build-17481</a> — renders XML and JSON feeds through separate modifier names before saving them.</li>
+        <li><a href="https://github.com/GetPublii/Publii/blob/d6d4961fcff5b1530ef583e2eac32322ea22a618/app/back-end/modules/render-html/renderer-plugins.js#L144-L156">Publii modifier runner at the same tag</a> — passes each modifier's output to the next registered modifier.</li>
+        <li><a href="https://github.com/GetPublii/Publii/blob/d6d4961fcff5b1530ef583e2eac32322ea22a618/app/default-files/theme-files/feed-xml.hbs#L1-L63">Publii's tagged default Atom template</a> — shows self and entry links, IDs, <code>media:content</code>, and HTML images inside CDATA.</li>
+        <li><a href="https://github.com/x6c-co/publii-cdn/issues/2">publii-cdn issue #2</a> — the public request for image-CDN rewriting in the generated feed.</li>
+        <li><a href="https://github.com/x6c-co/publii-cdn/pull/3">publii-cdn PR #3</a> — a tested implementation of this bounded pattern. It is pending maintainer review, not merged, adopted, commissioned, or customer work.</li>
+      </ul></section>
+
+      <section class="cta" aria-labelledby="cta-title"><h2 id="cta-title">Have one reproducible Publii plugin defect?</h2><p>The fixed £45 repair covers one defect in one existing plugin and one supported Publii version, with a patch or tested installable ZIP, focused evidence, and install or rollback notes. We agree the written acceptance checks first; payment is due only after they pass.</p><a class="button" href="../../publii-plugin-repair/">Check the £45 repair scope</a><a class="button secondary" href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=publii-plugin-repair.yml">Describe the public defect</a></section>
+    </article>
+  </main>
+  <footer><div class="wrap">Independent guide maintained by a person using an AI coding agent. PR #3 is pending review and is not presented as adoption or customer work. Do not send credentials, private source, site exports, personal data, or security findings in a public request. <a href="../../telegram-privacy/">Enquiry privacy</a>.</div></footer>
+</body>
+</html>
