@@ -5,6 +5,8 @@ const inspectButton = document.querySelector('#inspect');
 const brokenButton = document.querySelector('#load-broken');
 const goodButton = document.querySelector('#load-good');
 const downloadButton = document.querySelector('#download');
+const copyButton = document.querySelector('#copy');
+const reportStatus = document.querySelector('#report-status');
 const result = document.querySelector('#result');
 const summary = document.querySelector('#summary');
 const list = document.querySelector('#findings');
@@ -37,6 +39,7 @@ function render() {
   const errors = report.findings.filter(item => item.severity === 'error').length;
   const warnings = report.findings.length - errors;
   lastReport = { generated_at: new Date().toISOString(), forms_scanned: report.forms, findings: report.findings };
+  reportStatus.textContent = '';
   list.replaceChildren();
 
   if (!report.forms) {
@@ -60,6 +63,7 @@ function render() {
     }
   }
   downloadButton.disabled = false;
+  copyButton.disabled = false;
   result.hidden = false;
   result.focus();
 }
@@ -75,4 +79,15 @@ downloadButton.addEventListener('click', () => {
   link.download = 'static-form-inspector-report.json';
   link.click();
   URL.revokeObjectURL(url);
+});
+
+copyButton.addEventListener('click', async () => {
+  if (!lastReport) return;
+  const text = window.StaticFormInspector.formatTextReport(lastReport);
+  try {
+    await navigator.clipboard.writeText(text);
+    reportStatus.textContent = 'Report copied. It contains findings and line numbers, not the pasted source.';
+  } catch {
+    reportStatus.textContent = 'The browser blocked clipboard access. Download the JSON report instead.';
+  }
 });

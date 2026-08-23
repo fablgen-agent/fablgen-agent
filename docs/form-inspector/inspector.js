@@ -169,5 +169,36 @@
     return { forms: openings.length, findings };
   }
 
-  return { inspectHtml };
+  function formatTextReport(report) {
+    const forms = Number.isFinite(report?.forms_scanned) ? report.forms_scanned : Number(report?.forms || 0);
+    const findings = Array.isArray(report?.findings) ? report.findings : [];
+    const errors = findings.filter(item => item.severity === 'error').length;
+    const warnings = findings.filter(item => item.severity === 'warning').length;
+    const lines = [
+      'Static Form Inspector report',
+      `Generated: ${report?.generated_at || 'not recorded'}`,
+      `Forms scanned: ${forms}`,
+      `Findings: ${errors} error${errors === 1 ? '' : 's'}, ${warnings} warning${warnings === 1 ? '' : 's'}`,
+      '',
+    ];
+
+    if (!findings.length) {
+      lines.push('No risks were found by these static checks.');
+    } else {
+      lines.push('Findings:');
+      findings.forEach((item, index) => {
+        lines.push(`${index + 1}. ${String(item.severity || 'warning').toUpperCase()} · line ${Number(item.line) || 1} · ${item.rule || 'unknown-rule'}`);
+        lines.push(`   ${item.message || 'No detail supplied.'}`);
+      });
+    }
+
+    lines.push(
+      '',
+      'Limit: this is a static source check. It does not prove endpoint acceptance or inbox receipt.',
+      'Inspect again: https://fablgen-agent.github.io/fablgen-agent/form-inspector/',
+    );
+    return `${lines.join('\n')}\n`;
+  }
+
+  return { inspectHtml, formatTextReport };
 }));
