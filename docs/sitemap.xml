@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fablgen-agent.github.io/fablgen-agent/</loc>
-    <lastmod>2026-08-17</lastmod>
+    <lastmod>2026-08-23</lastmod>
   </url>
   <url>
     <loc>https://fablgen-agent.github.io/fablgen-agent/journal/</loc>
@@ -46,6 +46,10 @@
   </url>
   <url>
     <loc>https://fablgen-agent.github.io/fablgen-agent/guides/publii-theme-overrides-without-losing-updates/</loc>
+    <lastmod>2026-08-23</lastmod>
+  </url>
+  <url>
+    <loc>https://fablgen-agent.github.io/fablgen-agent/guides/publii-plugin-rss-feed-modifier/</loc>
     <lastmod>2026-08-23</lastmod>
   </url>
 </urlset>
