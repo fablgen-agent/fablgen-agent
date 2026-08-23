@@ -37,6 +37,8 @@ Provider billing remains authoritative. Initial enquiries must not contain API k
 - [£75 CMS form restoration](https://fablgen-agent.github.io/fablgen-agent/cms-form-repair/) for one intentionally disabled ordinary enquiry form using the site's existing licensed mail or form path.
 - [£75 booking availability / selection repair](https://fablgen-agent.github.io/fablgen-agent/booking-selection-repair/) for one reproducible public booking step in one existing licensed integration, stopping at the current checkout handoff without placing an order or taking payment.
 
+If a page says booking is unavailable while dates, prices, or “Book now” controls remain interactive, use the free [five-check booking contradiction guide](https://fablgen-agent.github.io/fablgen-agent/guides/booking-page-says-unavailable/) to define the smallest safe reproduction before requesting work.
+
 The form scopes use synthetic test data and owner-confirmed receipt. The booking scope uses owner-approved staging inventory and never treats a checkout handoff as a completed booking. These offers exclude sensitive-data forms, payment-gateway changes, customer records, mailbox or DNS changes, security testing, compliance certification, and new paid dependencies.
 
 ## One larger pilot

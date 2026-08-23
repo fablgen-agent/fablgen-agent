@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Booking page says unavailable but still shows Book Now? Five checks</title>
+  <meta name="description" content="A safe five-step check for booking pages that say online booking is unavailable while dates, prices, or Book Now controls remain interactive.">
+  <link rel="canonical" href="https://fablgen-agent.github.io/fablgen-agent/guides/booking-page-says-unavailable/">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Booking unavailable, but Book Now is still active?">
+  <meta property="og:description" content="Separate contradictory page state from real availability, then test one valid and one invalid selection without placing an order.">
+  <meta property="og:url" content="https://fablgen-agent.github.io/fablgen-agent/guides/booking-page-says-unavailable/">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#15251d">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does an unavailable message prove that online booking is disabled?","acceptedAnswer":{"@type":"Answer","text":"No. It proves only that the message is visible. Dates, inventory, pricing, and the booking action must be checked as separate states before concluding what is unavailable."}},{"@type":"Question","name":"Should a booking-page test place a real order?","acceptedAnswer":{"@type":"Answer","text":"No. Use owner-approved staging inventory and stop at the existing checkout handoff. Do not create an order, payment, deposit, refund, or customer record during acceptance."}},{"@type":"Question","name":"What is the smallest useful acceptance test?","acceptedAnswer":{"@type":"Answer","text":"Check an incomplete selection, one owner-confirmed valid selection, and one unavailable or invalid selection. Only the valid state should reach the existing checkout handoff."}}]}</script>
+  <style>
+    :root { color-scheme:light; --ink:#15251d; --muted:#526158; --paper:#f5f1e8; --panel:#fffdf7; --line:#d5d0c4; --accent:#08775b; --accent-dark:#075c49; --warm:#e6a23c; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:radial-gradient(circle at 88% 8%,rgb(230 162 60 / 18%),transparent 24rem),var(--paper); font:17px/1.65 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    a { color:var(--accent-dark); }
+    a:focus-visible { outline:3px solid var(--warm); outline-offset:3px; }
+    .wrap { width:min(980px,calc(100% - 2rem)); margin-inline:auto; }
+    header.site { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-block:1.25rem; }
+    .brand,.back { display:inline-flex; min-height:44px; align-items:center; font-weight:800; }
+    .brand { color:var(--ink); letter-spacing:-.03em; text-decoration:none; }
+    main { padding:clamp(2.5rem,8vw,6rem) 0 5rem; }
+    .eyebrow { color:var(--accent-dark); font-size:.82rem; font-weight:850; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { max-width:900px; margin:.65rem 0 1.1rem; font-size:clamp(2.6rem,7vw,5.4rem); line-height:.98; letter-spacing:-.06em; }
+    h2 { margin:0 0 .75rem; font-size:clamp(1.55rem,3.4vw,2.35rem); line-height:1.13; letter-spacing:-.035em; }
+    .lede { max-width:780px; margin:0 0 1.6rem; color:var(--muted); font-size:clamp(1.08rem,2vw,1.3rem); }
+    .actions { display:flex; flex-wrap:wrap; gap:.65rem; }
+    .button { display:inline-flex; min-height:48px; align-items:center; padding:.72rem 1rem; border:2px solid var(--accent); border-radius:.35rem; color:white; background:var(--accent); font-weight:800; text-decoration:none; }
+    .button:hover { border-color:var(--accent-dark); background:var(--accent-dark); }
+    .secondary { color:var(--accent-dark); background:transparent; }
+    .secondary:hover { color:white; }
+    .boundary { max-width:800px; margin-top:1rem; color:var(--muted); font-size:.92rem; }
+    .signal { display:grid; grid-template-columns:.8fr 1.2fr; gap:1rem; margin-top:clamp(3.2rem,8vw,5.5rem); }
+    .signal > div { padding:1.35rem; border:1px solid var(--line); border-radius:.6rem; background:var(--panel); }
+    .signal strong { display:block; color:var(--accent-dark); font-size:1.2rem; }
+    .signal p { margin:.35rem 0 0; color:var(--muted); }
+    .steps { display:grid; gap:1rem; margin-top:clamp(3.2rem,8vw,5.5rem); }
+    .step { display:grid; grid-template-columns:3rem 1fr; gap:1rem; padding:clamp(1.25rem,4vw,2rem); border:1px solid var(--line); border-radius:.6rem; background:rgb(255 253 247 / 84%); }
+    .number { display:grid; place-items:center; width:2.35rem; height:2.35rem; border-radius:50%; color:white; background:var(--accent); font-weight:850; }
+    .step p { max-width:790px; margin:.45rem 0 0; }
+    .result { margin-top:1rem; padding:.9rem 1rem; border-left:4px solid var(--warm); background:var(--panel); }
+    .result strong { display:block; }
+    .state-table { width:100%; margin-top:1rem; border-collapse:collapse; background:var(--panel); }
+    .state-table th,.state-table td { padding:.75rem; border:1px solid var(--line); text-align:left; vertical-align:top; }
+    .state-table th { color:var(--accent-dark); }
+    .checklist { margin:1rem 0 0; padding:1rem 1rem 1rem 2.2rem; border-radius:.4rem; color:#edf7f2; background:#15251d; }
+    .checklist li { padding:.25rem 0; }
+    .faq { margin-top:clamp(3.2rem,8vw,5rem); }
+    .faq details { margin-top:.75rem; padding:1rem 1.15rem; border:1px solid var(--line); border-radius:.6rem; background:var(--panel); }
+    .faq summary { cursor:pointer; font-weight:800; }
+    .cta { margin-top:3.5rem; padding:clamp(1.5rem,5vw,2.6rem); border-radius:.7rem; color:white; background:var(--ink); }
+    .cta p { max-width:760px; color:#d9e2dc; }
+    .cta .button { border-color:#bde5d3; color:#153f34; background:#bde5d3; }
+    .cta .secondary { color:#bde5d3; background:transparent; }
+    .cta .secondary:hover { color:#153f34; background:#bde5d3; }
+    footer { padding:2rem 0; border-top:1px solid var(--line); color:var(--muted); font-size:.9rem; }
+    footer a { display:inline-flex; min-height:44px; align-items:center; }
+    @media (max-width:700px) { .signal,.step { grid-template-columns:1fr; } .actions { align-items:stretch; } .button { width:100%; justify-content:center; } .state-table { font-size:.9rem; } .state-table th,.state-table td { padding:.55rem; } header.site { align-items:flex-start; } }
+  </style>
+</head>
+<body>
+  <header class="site wrap"><a class="brand" href="../../" aria-label="Fablgen home">fablgen</a><a class="back" href="../../booking-selection-repair/">Fixed £75 repair</a></header>
+  <main class="wrap">
+    <article>
+      <header>
+        <div class="eyebrow">Practical guide · no booking required</div>
+        <h1>Booking says “unavailable” while Book Now is still active?</h1>
+        <p class="lede">Treat the message, selection controls, availability result, price, and booking action as separate states. These five checks turn a contradictory page into a bounded reproduction without entering customer data or completing checkout.</p>
+        <div class="actions"><a class="button" href="#five-checks">Run the five checks</a><a class="button secondary" href="../../booking-selection-repair/">See the fixed repair</a></div>
+        <p class="boundary">Use public behaviour or owner-controlled staging only. Do not place a real order, hold scarce inventory, enter another person’s information, or test a payment gateway.</p>
+      </header>
+      <section class="signal" aria-label="What the contradiction proves"><div><strong>It proves</strong><p>The visitor is receiving two incompatible interface signals.</p></div><div><strong>It does not prove</strong><p>That inventory exists, that a booking could complete, what caused the defect, or that the business lost a customer or revenue.</p></div></section>
+      <section class="steps" id="five-checks" aria-labelledby="checks-title">
+        <div><div class="eyebrow">Reproducible diagnosis</div><h2 id="checks-title">Five checks, stopping before checkout</h2></div>
+        <section class="step"><span class="number">1</span><div><h2>Record the contradiction before changing it</h2><p>Capture the public URL, visible unavailable message, current date and time, selected product or service, and which controls remain enabled. Do not infer a backend cause from the page.</p><div class="result"><strong>Pass condition</strong>Another reviewer can reproduce the same contradictory state from public information without submitting anything.</div></div></section>
+        <section class="step"><span class="number">2</span><div><h2>Separate incomplete, valid, invalid, and unavailable states</h2><p>A booking widget should not treat “nothing selected,” “invalid combination,” and “sold out” as the same result. Ask the owner for one staging example of each state that the integration can actually represent.</p><table class="state-table"><thead><tr><th>State</th><th>Useful result</th><th>Primary action</th></tr></thead><tbody><tr><td>Incomplete</td><td>Say what is missing</td><td>Disabled</td></tr><tr><td>Valid</td><td>Show owner-confirmed option and total</td><td>Enabled</td></tr><tr><td>Invalid</td><td>Name the incompatible selection</td><td>Disabled</td></tr><tr><td>Unavailable</td><td>Say it cannot be selected</td><td>Disabled</td></tr></tbody></table></div></section>
+        <section class="step"><span class="number">3</span><div><h2>Trace where each visible state comes from</h2><p>Check whether the unavailable notice is fixed page content, cached output, a theme override, or a response from the existing booking integration. Then check the date, guest, inventory, price, and action states independently. A stale notice and a stale widget can fail in different directions.</p><div class="result"><strong>Pass condition</strong>The owner can identify the existing licensed integration and the smallest code or configuration path responsible for each contradictory signal.</div></div></section>
+        <section class="step"><span class="number">4</span><div><h2>Define a tagged staging handoff</h2><p>Use an owner-approved staging item or non-scarce test slot. The successful check ends when the valid selection reaches the existing checkout handoff. It must not create an order, payment, deposit, refund, guest record, or customer record.</p><div class="result"><strong>Pass condition</strong>The selected option and total remain correct at the handoff, and the reviewer can leave without completing checkout or reserving real inventory.</div></div></section>
+        <section class="step"><span class="number">5</span><div><h2>Test the failure path and keyboard path</h2><p>Confirm that an incomplete, invalid, or unavailable selection cannot activate the booking action; that its message remains useful at a common phone width; and that every required control and status is reachable by keyboard. Do not declare success from the valid path alone.</p><ul class="checklist"><li>Incomplete selection cannot continue</li><li>One owner-confirmed valid selection shows the expected option and total</li><li>One invalid or unavailable selection stops with a useful message</li><li>Only the valid selection reaches the existing checkout handoff</li><li>No order, payment, deposit, refund, or customer record is created</li><li>The path remains usable by keyboard at phone and desktop widths</li></ul></div></section>
+      </section>
+      <section class="faq" aria-labelledby="faq-title"><div class="eyebrow">Short answers</div><h2 id="faq-title">Booking-selection FAQ</h2><details><summary>Does the unavailable message prove online booking is disabled?</summary><p>No. It proves only that the message is visible. Check dates, inventory, pricing, and the booking action as separate states.</p></details><details><summary>Should the test place a real order?</summary><p>No. Use owner-approved staging inventory and stop at the existing checkout handoff. Acceptance must not create an order, payment, deposit, refund, or customer record.</p></details><details><summary>What is the smallest useful acceptance test?</summary><p>Check an incomplete selection, one owner-confirmed valid selection, and one unavailable or invalid selection. Only the valid state should reach the existing checkout handoff.</p></details></section>
+      <section class="cta" aria-labelledby="cta-title"><h2 id="cta-title">Need the contradictory selection path repaired?</h2><p>The fixed £75 scope covers one reproducible public availability or booking-selection defect in one existing licensed integration and one product, service, resource, or location. A written fit check comes first, and payment is due only after every agreed acceptance check passes.</p><div class="actions"><a class="button" href="https://work.enby.fish/?service=booking_selection">Request the scope privately</a><a class="button secondary" href="../../booking-selection-repair/">Read every inclusion and exclusion</a></div></section>
+    </article>
+  </main>
+  <footer><div class="wrap">Operated by a person using Fablgen Agent, an AI coding agent. This guide names interface checks, not a backend diagnosis, customer loss, completed booking, or revenue result. <a href="../../telegram-privacy/">Telegram privacy</a>.</div></footer>
+</body>
+</html>
