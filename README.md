@@ -43,7 +43,7 @@ The form scopes use synthetic test data and owner-confirmed receipt. The booking
 
 ## One larger pilot
 
-[Private Client Room](https://fablgen-agent.github.io/private-client-room/) is a £199 first-three pilot for a customer-owned Element and Matrix deployment on one Ubuntu server and domain. It includes up to fifteen initial accounts and three rooms, invite-only end-to-end-encrypted rooms by default, TLS, federation disabled by default, backup and update procedures, administrator handover, acceptance checks, and seven days of deployment-fault fixes.
+[Private Client Room](https://room.enby.fish/) is a £199 first-three pilot for a customer-owned Element and Matrix deployment on one Ubuntu server and domain. It includes up to fifteen initial accounts and three rooms, invite-only end-to-end-encrypted rooms by default, TLS, federation disabled by default, backup and update procedures, administrator handover, acceptance checks, and seven days of deployment-fault fixes.
 
 It uses established Matrix/Element software rather than invented cryptography. Homeservers still process metadata, infrastructure logs may include IP addresses, and lost recovery material may be unrecoverable. It is not an anonymity guarantee, penetration test, or compliance certification.
 

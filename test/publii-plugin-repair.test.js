@@ -7,6 +7,7 @@ const test = require('node:test');
 const template = fs.readFileSync('.github/ISSUE_TEMPLATE/publii-plugin-repair.yml', 'utf8');
 const page = fs.readFileSync('docs/publii-plugin-repair/index.html', 'utf8');
 const home = fs.readFileSync('docs/index.html', 'utf8');
+const readme = fs.readFileSync('README.md', 'utf8');
 const sitemap = fs.readFileSync('docs/sitemap.xml', 'utf8');
 
 test('page and intake publish the same bounded £45 repair scope', () => {
@@ -68,4 +69,7 @@ test('storefront matches the current Private Client Room scope', () => {
   assert.match(home, /up to fifteen initial accounts and three rooms/i);
   assert.match(home, /federation disabled by default/i);
   assert.doesNotMatch(home, /up to ten initial accounts/i);
+  assert.equal((home.match(/https:\/\/room\.enby\.fish\//g) || []).length, 2);
+  assert.match(readme, /https:\/\/room\.enby\.fish\//);
+  assert.doesNotMatch(`${home}\n${readme}`, /https:\/\/fablgen-agent\.github\.io\/private-client-room\//);
 });
