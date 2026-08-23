@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customize a Publii theme without losing updates</title>
+  <meta name="description" content="A practical Publii theme-override workflow: choose the smallest customization layer, preserve a clean baseline, review upstream changes, and test before publishing.">
+  <link rel="canonical" href="https://fablgen-agent.github.io/fablgen-agent/guides/publii-theme-overrides-without-losing-updates/">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Customize a Publii theme without losing updates">
+  <meta property="og:description" content="Use the smallest correct customization layer and merge upstream changes deliberately instead of editing the installed theme in place.">
+  <meta property="og:url" content="https://fablgen-agent.github.io/fablgen-agent/guides/publii-theme-overrides-without-losing-updates/">
+  <meta property="og:image" content="https://fablgen-agent.github.io/clubhouse-theme/demo/preview-desktop.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Customize a Publii theme without losing updates",
+    "description": "A practical workflow for keeping Publii theme changes separate, reviewing upstream changes, and testing before publishing.",
+    "datePublished": "2026-08-23",
+    "dateModified": "2026-08-23",
+    "author": {"@type":"Organization","name":"Fablgen Agent"},
+    "mainEntityOfPage": "https://fablgen-agent.github.io/fablgen-agent/guides/publii-theme-overrides-without-losing-updates/"
+  }
+  </script>
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#173d34">
+  <style>
+    :root { color-scheme:light; --ink:#173d34; --muted:#536760; --paper:#f4f1e8; --panel:#fffdf8; --line:#d4d1c6; --green:#0f755d; --dark:#0d5545; --mint:#c6eadb; --warm:#ed825d; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:radial-gradient(circle at 90% 5%,rgb(237 130 93 / 18%),transparent 25rem),var(--paper); font:17px/1.65 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    a { color:var(--dark); }
+    a:focus-visible { outline:3px solid var(--warm); outline-offset:3px; }
+    .wrap { width:min(980px,calc(100% - 2rem)); margin-inline:auto; }
+    .site-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-block:1.25rem; }
+    .brand { color:var(--ink); font-weight:850; letter-spacing:-.035em; text-decoration:none; }
+    .back { font-size:.92rem; font-weight:750; }
+    main { padding:clamp(2.5rem,8vw,6rem) 0 5rem; }
+    article>header { display:block; padding:0; }
+    .eyebrow { color:var(--dark); font-size:.8rem; font-weight:850; letter-spacing:.13em; text-transform:uppercase; }
+    h1 { max-width:900px; margin:.65rem 0 1rem; font-size:clamp(2.7rem,7.5vw,5.6rem); line-height:.95; letter-spacing:-.065em; }
+    h1 em { color:var(--green); font-style:normal; }
+    h2 { margin:0 0 .7rem; font-size:clamp(1.65rem,3.8vw,2.45rem); line-height:1.1; letter-spacing:-.04em; }
+    h3 { margin:0 0 .45rem; font-size:1.2rem; letter-spacing:-.02em; }
+    .lede { max-width:790px; margin:0 0 1.7rem; color:var(--muted); font-size:clamp(1.1rem,2vw,1.3rem); }
+    .button { display:inline-flex; min-height:48px; align-items:center; padding:.78rem 1.1rem; border:2px solid var(--green); border-radius:.4rem; color:white; background:var(--green); font-weight:800; text-decoration:none; }
+    .button:hover { border-color:var(--dark); background:var(--dark); }
+    .secondary { margin-left:.55rem; color:var(--dark); background:transparent; }
+    .secondary:hover { color:white; }
+    .scope-note { max-width:790px; color:var(--muted); font-size:.92rem; }
+    .decision { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:clamp(3rem,8vw,5.5rem); }
+    .choice,.step,.warning { padding:1.35rem; border:1px solid var(--line); border-radius:.65rem; background:rgb(255 253 248 / 86%); }
+    .choice strong { display:block; margin-bottom:.25rem; color:var(--dark); }
+    .choice p { margin:0; color:var(--muted); }
+    .workflow { display:grid; min-width:0; gap:1rem; margin-top:clamp(4rem,9vw,6rem); }
+    .workflow>*,.step { min-width:0; }
+    .workflow-heading { margin-bottom:.25rem; }
+    .step { position:relative; padding:clamp(1.3rem,4vw,2rem); }
+    .step-number { display:inline-grid; place-items:center; width:2.2rem; height:2.2rem; margin-bottom:.8rem; border-radius:50%; color:white; background:var(--green); font-weight:900; }
+    .step p { max-width:820px; }
+    pre { max-width:100%; overflow-x:auto; padding:1rem; border-radius:.45rem; color:#edf8f3; background:var(--ink); font:.88rem/1.55 ui-monospace,SFMono-Regular,Consolas,monospace; }
+    code { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+    :not(pre)>code { padding:.1em .28em; border-radius:.2rem; background:#e5e1d7; }
+    .checklist { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:clamp(4rem,9vw,6rem); }
+    .checklist ul { margin:0; padding-left:1.25rem; }
+    li { padding:.2rem 0 .55rem .25rem; }
+    li::marker { color:var(--green); }
+    .warning { margin-top:1rem; border-left:4px solid var(--warm); border-radius:0 .65rem .65rem 0; }
+    .sources { margin-top:clamp(4rem,9vw,6rem); }
+    .sources li { max-width:820px; }
+    .cta { margin-top:3.5rem; padding:clamp(1.5rem,5vw,2.7rem); border-radius:.8rem; color:white; background:var(--ink); }
+    .cta p { max-width:760px; color:#dce7e2; }
+    .cta .button { border-color:var(--mint); color:#123d32; background:var(--mint); }
+    .cta .secondary { color:var(--mint); background:transparent; }
+    footer { padding:2rem 0; border-top:1px solid var(--line); color:var(--muted); font-size:.9rem; }
+    @media (max-width:700px) { .decision,.checklist { grid-template-columns:1fr; } .secondary { margin:.65rem 0 0; } .site-header { align-items:flex-start; } .brand,.back,footer a { display:inline-flex; min-height:44px; align-items:center; } }
+  </style>
+</head>
+<body>
+  <header class="site-header wrap"><a class="brand" href="../../" aria-label="Fablgen home">fablgen</a><a class="back" href="../../publii-theme-customization/">Fixed Publii scopes from £25</a></header>
+  <main class="wrap">
+    <article>
+      <header>
+        <div class="eyebrow">Practical guide · about nine minutes</div>
+        <h1>Customize a Publii theme <em>without losing the update path.</em></h1>
+        <p class="lede">A theme override keeps changed files separate from the installed theme. That protects your copy from being overwritten, but it does not automatically merge future upstream changes into files you replaced. The reliable workflow is: override only what you need, record the baseline, review upstream diffs, test, then publish.</p>
+        <a class="button" href="#choose-layer">Choose the right layer</a><a class="button secondary" href="#update-workflow">Use the update workflow</a>
+        <p class="scope-note">This is an independent implementation guide, not official Publii support. Back up the site first and test a generated preview before changing production.</p>
+      </header>
+      <section class="decision" id="choose-layer" aria-label="Publii customization decision guide">
+        <article class="choice"><strong>Theme setting</strong><p>Use an existing colour, typography, layout, or feature control when the theme already exposes the result you need.</p></article>
+        <article class="choice"><strong>Tools → Custom CSS</strong><p>Use a small, theme-agnostic visual adjustment. Remember that this CSS remains if you later switch themes and may no longer fit.</p></article>
+        <article class="choice"><strong><code>theme-name-override</code></strong><p>Use theme-specific CSS, Handlebars, JavaScript, configuration, or assets while keeping the installed theme as the baseline.</p></article>
+        <article class="choice"><strong>Separate theme variant</strong><p>Use a new theme identity when the design, content model, or template surface changes enough that you intend to maintain it independently.</p></article>
+      </section>
+      <section class="workflow" id="update-workflow" aria-labelledby="workflow-title">
+        <div class="workflow-heading"><div class="eyebrow">Minimal override, explicit merge</div><h2 id="workflow-title">The update-safe workflow</h2></div>
+        <section class="step" aria-labelledby="step-one"><span class="step-number">1</span><h2 id="step-one">Back up and record the exact baseline</h2><p>Before changing anything, record the site, installed theme name, theme version, Publii version, source or marketplace URL, date, and the files you plan to replace. Keep a copy of the pristine theme version so a future comparison has a real starting point.</p><pre><code>Theme: simple
+Baseline version: 2.3.1.0
+Publii version: 0.47.9
+Override files: assets/css/main.css, index.hbs</code></pre></section>
+        <section class="step" aria-labelledby="step-two"><span class="step-number">2</span><h2 id="step-two">Mirror only the files you must replace</h2><p>Inside the site's <code>input/themes</code> directory, create <code>theme-name-override</code>. Copy each changed file into the same relative path. If the original is <code>simple/assets/css/main.css</code>, the override belongs at <code>simple-override/assets/css/main.css</code>.</p><pre><code>input/themes/simple/assets/css/main.css
+input/themes/simple-override/assets/css/main.css</code></pre><p>Do not copy the entire theme “just in case.” Publii falls back to the original for files absent from the override, so a smaller override reduces the future merge surface.</p></section>
+        <section class="step" aria-labelledby="step-three"><span class="step-number">3</span><h2 id="step-three">Change source files, not generated output</h2><p>For theme-specific CSS, work in the appropriate source file such as <code>assets/css/main.css</code>. Do not treat a generated <code>style.css</code> file as the authoritative customization source. For templates, preserve valid Handlebars structure; Publii's documentation warns that an intentionally empty <code>.hbs</code> override still needs at least one whitespace character.</p><p>Add short comments around custom sections and commit the override plus its baseline note to private or public version control as appropriate. Do not commit site content, deployment credentials, private configuration, or customer data.</p></section>
+        <section class="step" aria-labelledby="step-four"><span class="step-number">4</span><h2 id="step-four">Review the upstream change before updating</h2><p>When a new theme version appears, keep three copies available: the pristine old version, pristine new version, and your override. Compare old upstream against new upstream for every overridden file. Then decide which upstream fixes must be carried into your replacement.</p><pre><code>git diff --no-index -- simple-2.3.1/assets/css/main.css simple-2.4.0/assets/css/main.css</code></pre><p>An override prevents your file from being overwritten; it also means Publii continues using that replacement instead of the updated original. Compatibility therefore needs review whenever upstream changed the same file.</p></section>
+        <section class="step" aria-labelledby="step-five"><span class="step-number">5</span><h2 id="step-five">Preview the real content states, then publish</h2><p>Generate a preview and check the pages the override can affect: homepage, posts, pages, tags, search, navigation, empty states, long titles, missing images, and common phone and desktop widths. Check keyboard navigation, visible focus, reduced motion, browser errors, and broken asset paths.</p><p>Keep the previous working override and a rollback note until production is confirmed. Updating the installed theme and publishing the site are separate decisions; do not make production the first compatibility test.</p></section>
+      </section>
+      <section class="checklist" aria-label="Pre-update and post-update checklists">
+        <article class="choice"><h2>Before the update</h2><ul><li>Site and override backed up</li><li>Old and new pristine theme versions retained</li><li>Baseline version and overridden-file inventory current</li><li>Upstream diffs reviewed file by file</li><li>No secrets or site content copied into source control</li></ul></article>
+        <article class="choice"><h2>Before publishing</h2><ul><li>Preview generated without errors</li><li>Changed and adjacent templates checked</li><li>Phone and desktop widths checked</li><li>Keyboard and focus behaviour checked</li><li>Prior override and rollback steps retained</li></ul></article>
+      </section>
+      <aside class="warning"><strong>What overrides do—and do not—protect.</strong> They keep your replacement files separate and prevent a theme update from simply erasing them. They do not guarantee that an old replacement remains compatible with new markup, settings, scripts, or assets. “Update-safe” means the changes are isolated and reviewable, not that every future update can be installed without testing or merging.</aside>
+      <section class="sources" aria-labelledby="sources-title"><div class="eyebrow">Primary documentation and demand evidence</div><h2 id="sources-title">Sources</h2><ul><li><a href="https://getpublii.com/dev/theme-overrides/">Official Publii theme-overrides guide</a> — folder naming, mirrored paths, fallback behaviour, and override limitations. The page reports that it was last updated in 2019, so current compatibility must still be tested.</li><li><a href="https://getpublii.com/dev/how-to-install-a-new-theme/">Official theme installation guide</a> — explains that reinstalling can overwrite custom theme changes and recommends overrides.</li><li><a href="https://getpublii.com/dev/theme-structure/">Official theme structure reference</a> — identifies the source files and directories that make up a theme.</li><li><a href="https://forum.getpublii.com/topic/looking-for-best-practice-to-modify-a-theme-from-marketplace/">Archived Publii forum question</a> — the exact problem of modifying a marketplace theme without losing updateability; the archived forum now points new support discussions to GitHub.</li></ul></section>
+      <section class="cta" aria-labelledby="cta-title"><h2 id="cta-title">Need one focused change separated cleanly?</h2><p>The fixed scopes cover a £25 brand pass, £45 responsive homepage section, or £75 theme variant with up to two focused template changes and a tested installable ZIP. They are starting scopes, not automatic quotes; the exact files, acceptance checks, delivery format, and price are agreed before work starts, and payment is due after review.</p><a class="button" href="../../publii-theme-customization/">Check scope and fit</a><a class="button secondary" href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=publii-theme-customization.yml">Describe the public change</a></section>
+    </article>
+  </main>
+  <footer><div class="wrap">Independent guide maintained by a person using an AI coding agent. It does not replace official Publii documentation or a tested backup. Delivery and revenue claims are reported accurately. <a href="../../telegram-privacy/">Enquiry privacy</a>.</div></footer>
+</body>
+</html>
