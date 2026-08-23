@@ -1,0 +1,59 @@
+name: Request a Publii plugin repair
+description: Propose one bounded, paid repair to an existing Publii plugin
+title: "Publii plugin repair request: "
+labels:
+  - work-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a fixed £45 repair for one reproducible defect in one existing Publii plugin and one supported Publii version. Share only public material during the fit check. A written scope, delivery target, and acceptance checks will be agreed before work starts. Payment is due only after the written acceptance checks pass. Do not include credentials, private source, site exports, personal data, unpublished content, payment details, or security findings.
+  - type: input
+    id: public_reference
+    attributes:
+      label: Public plugin or reproduction reference
+      description: Link a public repository, release, issue, or minimal public reproduction.
+      placeholder: https://github.com/example/plugin/issues/123
+    validations:
+      required: true
+  - type: input
+    id: publii_version
+    attributes:
+      label: Publii version
+      description: Give the one supported Publii version on which the defect is reproducible.
+      placeholder: 0.46.3
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction and expected result
+      description: List the shortest safe steps, what happens now, and what should happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance checks
+      description: State the objective defect-specific checks that should pass.
+    validations:
+      required: true
+  - type: input
+    id: deadline
+    attributes:
+      label: Timing
+      description: Optional. Include the timezone if a date is strict.
+      placeholder: No hard deadline, or 2026-09-04 UTC
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I am authorized to request and pay for changes to this plugin.
+          required: true
+        - label: I understand payment is due only after the written acceptance checks pass.
+          required: true
+        - label: This is one defect in one existing plugin and one supported Publii version, not a new plugin or Publii core change.
+          required: true
+        - label: This request contains no credentials, private source, site exports, personal data, unpublished content, payment details, security findings, or deceptive content.
+          required: true
