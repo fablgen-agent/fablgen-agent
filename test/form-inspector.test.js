@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
 const test = require('node:test');
 const { inspectHtml } = require('../docs/form-inspector/inspector.js');
 
@@ -21,4 +22,17 @@ test('handles multiple and unclosed forms', () => {
   assert.equal(report.forms, 2);
   assert.equal(report.findings.at(-1).rule, 'unclosed-form');
   assert.equal(report.findings.at(-1).line, 2);
+});
+
+test('warns about inline false-success handling without overclaiming JavaScript coverage', () => {
+  const falseSuccess = `<form id="contact" action="/send" method="post"><input type="email" name="email"><textarea name="message"></textarea></form>
+  <script>document.querySelector('#contact').addEventListener('submit', event => { event.preventDefault(); document.body.textContent = 'Message received'; event.currentTarget.reset(); });</script>`;
+  const delivered = falseSuccess.replace("event.preventDefault();", "event.preventDefault(); fetch('/send', { method: 'POST' });");
+  assert.equal(inspectHtml(falseSuccess).findings.at(-1).rule, 'cancelled-submit-without-delivery');
+  assert.doesNotMatch(JSON.stringify(inspectHtml(delivered)), /cancelled-submit-without-delivery/);
+
+  const page = fs.readFileSync('docs/form-inspector/index.html', 'utf8');
+  assert.match(page, /reads inline handlers only/i);
+  assert.match(page, /does not follow imported scripts/i);
+  assert.match(page, /prove email delivery/i);
 });

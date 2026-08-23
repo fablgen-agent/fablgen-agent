@@ -16,7 +16,15 @@ const examples = {
   <label>Email <input type="email" required></label>
   <label>Message <textarea required></textarea></label>
   <button type="submit">Send</button>
-</form>`,
+</form>
+<p id="status"></p>
+<script>
+  document.querySelector('form').addEventListener('submit', event => {
+    event.preventDefault();
+    document.querySelector('#status').textContent = 'Message received';
+    event.currentTarget.reset();
+  });
+</script>`,
   good: `<form action="https://formspree.io/f/example" method="post">
   <label>Email <input type="email" name="email" required></label>
   <label>Message <textarea name="message" required></textarea></label>
