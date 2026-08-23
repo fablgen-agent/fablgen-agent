@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Publii plugin repair — one bounded defect for £45</title>
-  <meta name="description" content="A fixed £45 repair for one reproducible defect in one existing Publii plugin, with focused test evidence, install or rollback notes, and payment after acceptance.">
+  <title>Publii plugin repair or focused feature — £45 / £75</title>
+  <meta name="description" content="A fixed £45 defect repair or £75 focused feature for one existing Publii plugin, with focused test evidence, install or rollback notes, and payment after acceptance.">
   <link rel="canonical" href="https://fablgen-agent.github.io/fablgen-agent/publii-plugin-repair/">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Publii plugin repair — one bounded defect for £45">
-  <meta property="og:description" content="One existing plugin, one supported Publii version, one reproducible defect, and an explicit handoff.">
+  <meta property="og:title" content="Publii plugin repair or focused feature — £45 / £75">
+  <meta property="og:description" content="One existing plugin, one supported Publii version, and either one reproducible defect or one focused feature.">
   <meta property="og:url" content="https://fablgen-agent.github.io/fablgen-agent/publii-plugin-repair/">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Service","name":"Publii plugin repair","serviceType":"Bounded repair to an existing Publii plugin","description":"One reproducible defect in one existing Publii plugin and one supported Publii version, delivered with focused test evidence and install or rollback notes.","url":"https://fablgen-agent.github.io/fablgen-agent/publii-plugin-repair/","offers":{"@type":"Offer","name":"One Publii plugin defect repair","price":"45","priceCurrency":"GBP"}}
+  {"@context":"https://schema.org","@type":"Service","name":"Publii plugin repair or focused feature","serviceType":"Bounded work in an existing Publii plugin","description":"One reproducible defect or one focused feature in one existing Publii plugin and one supported Publii version, delivered with focused test evidence and install or rollback notes.","url":"https://fablgen-agent.github.io/fablgen-agent/publii-plugin-repair/","offers":[{"@type":"Offer","name":"One Publii plugin defect repair","price":"45","priceCurrency":"GBP"},{"@type":"Offer","name":"One focused feature in an existing Publii plugin","price":"75","priceCurrency":"GBP"}]}
   </script>
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#183b32">
@@ -35,7 +35,9 @@
     .button:hover { border-color:var(--green-dark); background:var(--green-dark); }
     .secondary { margin-left:.65rem; color:var(--green-dark); background:transparent; }
     .terms { margin:.85rem 0 0; color:var(--muted); font-size:.9rem; }
-    .scope { display:grid; grid-template-columns:.7fr 1.3fr; gap:clamp(1.5rem,5vw,4rem); align-items:center; margin-top:clamp(3rem,8vw,6rem); padding:clamp(1.5rem,5vw,2.8rem); border:1px solid var(--line); border-top:4px solid var(--coral); border-radius:.7rem; background:var(--panel); box-shadow:0 14px 35px rgb(24 59 50 / 6%); }
+    .scopes { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:clamp(3rem,8vw,6rem); }
+    .scope { display:grid; align-content:start; min-width:0; padding:clamp(1.5rem,5vw,2.8rem); border:1px solid var(--line); border-top:4px solid var(--coral); border-radius:.7rem; background:var(--panel); box-shadow:0 14px 35px rgb(24 59 50 / 6%); }
+    .scope.feature { border-top-color:var(--green); }
     .price { font-size:clamp(4rem,12vw,7.5rem); font-weight:900; line-height:.9; letter-spacing:-.08em; }
     .scope h2,.proof h2,.details h2,.process h2 { margin:.4rem 0 .75rem; font-size:clamp(1.8rem,4vw,2.8rem); line-height:1.05; letter-spacing:-.045em; }
     .scope p,.proof p { margin:.4rem 0; color:var(--muted); }
@@ -57,52 +59,53 @@
     .cta .button { border-color:var(--mint); color:#123d32; background:var(--mint); }
     .cta .secondary { color:var(--mint); background:transparent; }
     footer { padding:2rem 0; border-top:1px solid var(--line); color:var(--muted); font-size:.9rem; }
-    @media (max-width:760px) { .scope,.details { grid-template-columns:1fr; } .secondary { margin:.65rem 0 0; } header { align-items:flex-start; } .brand,.back,footer a { display:inline-flex; min-height:44px; align-items:center; } }
+    @media (max-width:760px) { .scopes,.details { grid-template-columns:1fr; } .secondary { margin:.65rem 0 0; } header { align-items:flex-start; } .brand,.back,footer a { display:inline-flex; min-height:44px; align-items:center; } }
   </style>
 </head>
 <body>
   <header class="wrap"><a class="brand" href="../" aria-label="Fablgen home">fablgen</a><a class="back" href="../">All fixed-price services</a></header>
   <main class="wrap">
     <section aria-labelledby="page-title">
-      <div class="eyebrow">Existing Publii plugins · defect repair</div>
-      <h1 id="page-title">One plugin defect. <em>One explicit handoff.</em></h1>
-      <p class="lede">A fixed £45 repair for one reproducible defect in one existing Publii plugin and one supported Publii version. You receive a written scope, a patch or tested installable ZIP, focused regression evidence, and install or rollback notes.</p>
-      <a class="button" href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=publii-plugin-repair.yml">Describe the plugin defect</a>
-      <a class="button secondary" href="mailto:accounts@enby.fish?subject=Publii%20plugin%20repair%20request&amp;body=Public%20plugin%20or%20reproduction%3A%0A%0APublii%20version%3A%0A%0AReproduction%3A%0A%0AExpected%20result%3A%0A%0AAcceptance%20checks%3A%0A%0ATiming%3A%0A%0ADo%20not%20include%20credentials%2C%20private%20source%2C%20site%20exports%2C%20personal%20data%2C%20unpublished%20content%2C%20payment%20details%2C%20or%20security%20findings.">Email without an account</a>
-      <p class="terms">One bounded defect · no upfront payment · no source or access requested during the public fit check</p>
+      <div class="eyebrow">Existing Publii plugins · repair or focused feature</div>
+      <h1 id="page-title">One plugin change. <em>One explicit handoff.</em></h1>
+      <p class="lede">Choose a fixed £45 repair for one reproducible defect or a fixed £75 focused feature in one existing Publii plugin and one supported Publii version. Both include a written scope, a patch or tested installable ZIP, focused evidence, and install or rollback notes.</p>
+      <a class="button" href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=publii-plugin-repair.yml">Describe the plugin change</a>
+      <a class="button secondary" href="mailto:accounts@enby.fish?subject=Publii%20plugin%20work%20request&amp;body=Request%20type%20%28%C2%A345%20repair%20or%20%C2%A375%20focused%20feature%29%3A%0A%0APublic%20plugin%20or%20reproduction%3A%0A%0APublii%20version%3A%0A%0ACurrent%20behaviour%3A%0A%0ARequested%20result%3A%0A%0AAcceptance%20checks%3A%0A%0ATiming%3A%0A%0ADo%20not%20include%20credentials%2C%20private%20source%2C%20site%20exports%2C%20personal%20data%2C%20unpublished%20content%2C%20payment%20details%2C%20or%20security%20findings.">Email without an account</a>
+      <p class="terms">One bounded change · no upfront payment · no source or access requested during the public fit check</p>
     </section>
 
-    <section class="scope" aria-labelledby="scope-title">
-      <div class="price">£45</div>
-      <div><div class="eyebrow">Fixed starting scope</div><h2 id="scope-title">Repair, prove, and hand over.</h2><p>One supported Publii version, the smallest defect-specific change, one focused regression or reproduction check, and a reviewable patch or installable ZIP. Payment is due only after the written acceptance checks pass.</p></div>
+    <section class="scopes" aria-label="Fixed Publii plugin scopes">
+      <article class="scope" aria-labelledby="repair-scope-title"><div class="price">£45</div><div><div class="eyebrow">One reproducible defect</div><h2 id="repair-scope-title">Repair, prove, and hand over.</h2><p>One supported Publii version, the smallest defect-specific change, one focused regression or reproduction check, and a reviewable patch or installable ZIP.</p></div></article>
+      <article class="scope feature" aria-labelledby="feature-scope-title"><div class="price">£75</div><div><div class="eyebrow">One focused feature</div><h2 id="feature-scope-title">Add one outcome to an existing plugin.</h2><p>One supported Publii version, one existing public plugin, one bounded configuration, modifier, event, or output behavior, focused tests, and a reviewable patch or installable ZIP.</p></div></article>
     </section>
+    <p class="terms">Payment for either scope is due only after the written acceptance checks pass. The £75 route is shared only after acceptance; it is never used for a deposit or unspecified work.</p>
 
     <section class="proof" aria-labelledby="proof-title">
       <div class="eyebrow">Public capability proof, not customer work</div>
-      <h2 id="proof-title">A real plugin-lifecycle defect traced to a tested patch.</h2>
-      <p>Publii pull request #2673 adds site-configuration cleanup after global plugin removal and includes two focused tests. It is pending upstream review and is not merged, adopted, or customer work. The linked discussion answer separately traces Publii's plugin activation and lifecycle behavior from source.</p>
-      <div class="proof-links"><a href="https://github.com/GetPublii/Publii/pull/2673">Inspect pending PR #2673</a><a href="https://github.com/GetPublii/Publii/discussions/2670">Read the source-grounded lifecycle analysis</a><a href="../guides/publii-plugin-rss-feed-modifier/">Guide: modify feed images without changing IDs</a></div>
+      <h2 id="proof-title">One defect patch and one focused feature, both tested publicly.</h2>
+      <p>Publii pull request #2673 adds site-configuration cleanup after global plugin removal. publii-cdn pull request #3 adds opt-in feed-image rewriting without changing feed identity URLs. Both are pending upstream review and neither is merged, adopted, commissioned, or customer work.</p>
+      <div class="proof-links"><a href="https://github.com/GetPublii/Publii/pull/2673">Inspect pending defect PR #2673</a><a href="https://github.com/x6c-co/publii-cdn/pull/3">Inspect pending feature PR #3</a><a href="../guides/publii-plugin-rss-feed-modifier/">Guide: modify feed images without changing IDs</a></div>
     </section>
 
     <section class="details" aria-label="Fit and exclusions">
-      <article class="panel"><h2>A good fit</h2><ul><li>An existing plugin with a public repository, release, issue, or minimal reproduction.</li><li>One defect reproducible on one supported Publii version.</li><li>Objective checks that distinguish the current failure from the expected result.</li><li>A repair reviewable as a small patch or tested installable ZIP.</li></ul></article>
-      <article class="panel"><h2>Not in this scope</h2><ul><li>A new plugin from scratch, multiple unrelated defects, or a feature roadmap.</li><li>Publii core changes, private renderer internals, content migration, or production site work unless separately agreed.</li><li>Marketplace submission, paid dependencies, credentials, private source, site exports, or visitor data.</li><li>Security testing, compliance work, deceptive behavior, or guaranteed marketplace or business results.</li></ul></article>
+      <article class="panel"><h2>A good fit</h2><ul><li>An existing plugin with a public repository, release, issue, or minimal reproduction.</li><li>One defect or one focused feature on one supported Publii version.</li><li>Objective checks that distinguish the current behavior from the requested result.</li><li>A change reviewable as a small patch or tested installable ZIP.</li></ul></article>
+      <article class="panel"><h2>Not in either scope</h2><ul><li>A new plugin from scratch, multiple unrelated defects or features, or a roadmap.</li><li>Publii core changes, unsupported private internals, content migration, or production site operation.</li><li>Marketplace submission, new paid dependencies, credentials, private source, site exports, or visitor data.</li><li>Security testing, compliance work, deceptive behavior, or guaranteed marketplace or business results.</li></ul></article>
     </section>
 
     <aside class="boundary"><strong>Public-first boundary:</strong> the initial fit check uses only public material. Do not send credentials, private source, site exports, personal data, unpublished content, payment details, or security findings. If private plugin source is genuinely necessary, its minimum transfer and deletion path must be agreed after scope confirmation.</aside>
 
     <section class="process" aria-labelledby="process-title">
-      <div class="eyebrow">Small defect, explicit process</div><h2 id="process-title">How it works</h2>
-      <ol><li><strong>Send the public reference.</strong> Include the Publii version, shortest reproduction, expected result, and acceptance checks.</li><li><strong>Receive a written fit check.</strong> I confirm the exact defect, version, exclusions, delivery target, evidence, and handoff format before work starts.</li><li><strong>Share only what is necessary after agreement.</strong> A public repository is preferred. No production credentials, full site exports, personal data, or payment details are needed.</li><li><strong>Review the repair.</strong> I deliver a patch or tested ZIP with the focused check and install or rollback notes.</li><li><strong>Pay after acceptance.</strong> Payment is due only after the written acceptance checks pass. One defect-only revision is included if those checks identify a miss.</li></ol>
+      <div class="eyebrow">Small change, explicit process</div><h2 id="process-title">How it works</h2>
+      <ol><li><strong>Send the public reference.</strong> Choose repair or feature, then include the Publii version, current behavior, requested result, and acceptance checks.</li><li><strong>Receive a written fit check.</strong> I confirm the exact change, fixed £45 or £75 price, version, exclusions, delivery target, evidence, and handoff format before work starts.</li><li><strong>Share only what is necessary after agreement.</strong> A public repository is preferred. No production credentials, full site exports, personal data, or payment details are needed.</li><li><strong>Review the change.</strong> I deliver a patch or tested ZIP with the focused check and install or rollback notes.</li><li><strong>Pay after acceptance.</strong> Payment is due only after the written acceptance checks pass. One scope-only revision is included if those checks identify a miss.</li></ol>
     </section>
 
     <section class="cta" aria-labelledby="cta-title">
-      <h2 id="cta-title">Can the defect be reproduced without sharing a live site?</h2>
-      <p>Send the public plugin or reproduction, Publii version, failure, expected result, acceptance checks, and timing. I will confirm fit before requesting source or access.</p>
-      <a class="button" href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=publii-plugin-repair.yml">Request the £45 repair scope</a>
-      <a class="button secondary" href="mailto:accounts@enby.fish?subject=Publii%20plugin%20repair%20request&amp;body=Public%20plugin%20or%20reproduction%3A%0A%0APublii%20version%3A%0A%0AReproduction%3A%0A%0AExpected%20result%3A%0A%0AAcceptance%20checks%3A%0A%0ATiming%3A%0A%0ADo%20not%20include%20credentials%2C%20private%20source%2C%20site%20exports%2C%20personal%20data%2C%20unpublished%20content%2C%20payment%20details%2C%20or%20security%20findings.">Email the public scope</a>
+      <h2 id="cta-title">Can the change be specified without sharing a live site?</h2>
+      <p>Choose the £45 repair or £75 feature scope, then send the public plugin, Publii version, current behavior, requested result, acceptance checks, and timing. I will confirm fit before requesting source or access.</p>
+      <a class="button" href="https://github.com/fablgen-agent/fablgen-agent/issues/new?template=publii-plugin-repair.yml">Request the £45 / £75 scope</a>
+      <a class="button secondary" href="mailto:accounts@enby.fish?subject=Publii%20plugin%20work%20request&amp;body=Request%20type%20%28%C2%A345%20repair%20or%20%C2%A375%20focused%20feature%29%3A%0A%0APublic%20plugin%20or%20reproduction%3A%0A%0APublii%20version%3A%0A%0ACurrent%20behaviour%3A%0A%0ARequested%20result%3A%0A%0AAcceptance%20checks%3A%0A%0ATiming%3A%0A%0ADo%20not%20include%20credentials%2C%20private%20source%2C%20site%20exports%2C%20personal%20data%2C%20unpublished%20content%2C%20payment%20details%2C%20or%20security%20findings.">Email the public scope</a>
     </section>
   </main>
-  <footer><div class="wrap">Operated by a person using an AI coding agent. Pull request #2673 is pending upstream review, not merged, adopted, or customer work. Scope, test results, delivery status, and revenue claims are reported accurately. <a href="../telegram-privacy/">Enquiry privacy</a>.</div></footer>
+  <footer><div class="wrap">Operated by a person using an AI coding agent. Pull requests #2673 and publii-cdn #3 are pending upstream review, not merged, adopted, commissioned, or customer work. Scope, test results, delivery status, and revenue claims are reported accurately. <a href="../telegram-privacy/">Enquiry privacy</a>.</div></footer>
 </body>
 </html>

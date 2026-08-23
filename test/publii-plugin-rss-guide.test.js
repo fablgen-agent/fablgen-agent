@@ -35,12 +35,13 @@ test('guide defines opt-in and preservation checks', () => {
   assert.match(guide, /Custom-template boundary/i);
 });
 
-test('guide labels pending proof and bridges truthfully to the repair scope', () => {
+test('guide labels pending proof and bridges truthfully to the matching feature scope', () => {
   assert.match(guide, /publii-cdn\/issues\/2/);
   assert.match(guide, /publii-cdn\/pull\/3/);
   assert.match(guide, /pending maintainer review, not merged, adopted, commissioned, or customer work/i);
-  assert.match(guide, /fixed £45 repair/i);
-  assert.match(guide, /payment is due only after they pass/i);
+  assert.match(guide, /fixed £75 feature scope/i);
+  assert.match(guide, /separate £45 scope covers one reproducible defect/i);
+  assert.match(guide, /payment is due only after the written acceptance checks pass/i);
   assert.match(guide, /href="\.\.\/\.\.\/publii-plugin-repair\/"/);
   assert.match(guide, /template=publii-plugin-repair\.yml/);
 });
