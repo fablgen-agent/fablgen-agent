@@ -40,9 +40,10 @@ test('public intake excludes secrets, sensitive data, and expanded scope', () =>
   assert.match(template, /authorized to request and pay/i);
 });
 
-test('both account-free paths ask for the minimum public change fields', () => {
+test('private browser, public issue, and email paths ask for the minimum public change fields', () => {
   const issueLinks = page.match(/https:\/\/github\.com\/fablgen-agent\/fablgen-agent\/issues\/new\?template=publii-plugin-repair\.yml/g) || [];
-  assert.equal(issueLinks.length, 2);
+  assert.equal(issueLinks.length, 1);
+  assert.match(page, /href="https:\/\/work\.enby\.fish\/\?service=publii_plugin"/);
 
   const emailLinks = [...page.matchAll(/href="(mailto:accounts@enby\.fish\?[^\"]+)"/g)];
   assert.equal(emailLinks.length, 2);
